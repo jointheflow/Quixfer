@@ -1,25 +1,31 @@
 <div ng-controller="GlobalController">
 			<h2>Add Transaction view</h2> 
             <p>Current user: {{currentUser.username}}, ({{currentUser.transactionList.length}})</p>
-			Date:<input type="date" placeholder="yyyy-MM-dd" ng-model="transdate"/>
-			Description:<input type="text" ng-model="description"/>
-			Amount: <input type="number" ng-model="amount"/>
-			Tag:<input type="text" ng-model="tag"/>
-			<button type="button" class="btn btn-default btn-lg" ng-click="addTransaction()"><span class="glyphicon glyphicon-star"></span> Add</button>
-            
-	
-</button>
-	
-	
-            <ul>
-			<li ng-repeat="transaction in currentUser.transactionList">
-				{{transaction.id}},Date:<input type="date" placeholder="yyyy-MM-dd" ng-model=transaction.date />,
-			Desc.:<input type="text" ng-model=transaction.description />,
-			Am.: <input type="number" ng-model=transaction.amount />,
-			Tag:<input type="text" ng-model=transaction.tags />,
-            Stat.: <input type="text" ng-model=transaction.status />,
-            Type: <input type="text" ng-model=transaction.type /><button ng-click="updateTransaction(transaction)">Save</button> <button ng-click="removeTransaction(transaction.id)">Remove</button><p>
-			</li>
-			</ul>
-    <button ng-click="synchronize()">Synchronize</button><p>
-    	</div>
+			<div class="table-responsive">
+				<table class="table">
+				<tr>
+					<td>Date</td><td><input type="date" placeholder="yyyy-MM-dd" ng-model="transdate"/></td>	
+
+				</tr>
+				<tr>
+					<td>Description</td><td><input type="text" ng-model="description"/></td>
+				</tr>
+				<tr>
+					<td>Amount</td><td><input type="number" ng-model="amount"/></td>	
+				</tr>
+				<tr>
+					<td>Tag</td><td><input type="text" ng-model="tag"/></td>	
+				</tr>
+				<tr>
+					<td>Type</td><td><select ng-model="type" class="form-control">
+  										<option value="Expense" selected="selected">Expense</option>
+  										<option value="Income">Income</option>
+  										
+						</select></td>	
+				</tr>
+				
+				<tr><td></td><td align="right"><button type="button" class="btn btn-default btn-lg" ng-click="addTransaction()"><span class="glyphicon glyphicon-plus"></span> Add</button></td></tr>
+					
+				</table>
+			</div>
+</div>

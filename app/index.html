@@ -12,7 +12,7 @@
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
 	
 	<script src="lib/jquery/jquery.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -21,7 +21,16 @@
  
 </head>
 <body>
-    
+<header>
+    <div class="navbar navbar-default navbar-fixed-top" ng-controller="GlobalController">
+        <div class="container">
+            	<a class="navbar-brand" href="#">SmartBuxfer</a>
+                <p class="navbar-text navbar-right">User: <b>{{currentUser.username}}</b>, ({{currentUser.transactionList.length}})</p>
+                     	
+
+        </div>
+    </div>
+</header>    
      
      
     
@@ -41,6 +50,7 @@
             
                 <ul class="nav navbar-nav">
                     <li><a href="#add">Add</a></li>
+					<li><a href="#synch">Synch</a></li>
                     <li><a href="#settings">Settings </a></li>
                     <li><a href="#about">About</a></li>
                    

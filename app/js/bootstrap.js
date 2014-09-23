@@ -5,8 +5,8 @@
  */
 
 /*!
- * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=87cbebac77ca0d75030f)
- * Config saved to config.json and https://gist.github.com/87cbebac77ca0d75030f
+ * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=37e0a76652a9846573eb)
+ * Config saved to config.json and https://gist.github.com/37e0a76652a9846573eb
  */
 if (typeof jQuery === "undefined") { throw new Error("Bootstrap's JavaScript requires jQuery") }
 

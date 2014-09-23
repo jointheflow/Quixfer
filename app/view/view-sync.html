@@ -1,2 +1,15 @@
-<h2>Sync view</h2>
+<div ng-controller="GlobalController">
+	<h2>Sync view</h2>
+	 <ul>
+				<li ng-repeat="transaction in currentUser.transactionList">
+					{{transaction.id}},Date:<input type="date" placeholder="yyyy-MM-dd" ng-model=transaction.date />,
+				Desc.:<input type="text" ng-model=transaction.description />,
+				Am.: <input type="number" ng-model=transaction.amount />,
+				Tag:<input type="text" ng-model=transaction.tags />,
+				Stat.: <input type="text" ng-model=transaction.status />,
+				Type: <input type="text" ng-model=transaction.type /><button ng-click="updateTransaction(transaction)">Save</button> <button ng-click="removeTransaction(transaction.id)">Remove</button><p>
+				</li>
+	</ul>
+		<button ng-click="synchronize()">Synchronize</button><p>
  
+</div>

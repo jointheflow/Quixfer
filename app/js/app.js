@@ -20,6 +20,11 @@ buxferModule.config(['$routeProvider',
 		templateUrl: 'view/view-about.html',
         controller: 'GlobalController'
       }).
+	  when('/synch', {
+        //templateUrl: 'view-about',
+		templateUrl: 'view/view-sync.html',
+        controller: 'GlobalController'
+      }).
       otherwise({
         redirectTo: '/add',
 		controller: 'GlobalController'

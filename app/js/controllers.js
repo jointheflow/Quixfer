@@ -3,6 +3,26 @@ buxferModule.controller('GlobalController',
         //initialize the scope with the users from local storage
         $scope.users = ServiceBuxferModel.buxferModel.users;
         $scope.currentUser = ServiceBuxferModel.buxferModel.currentUser;
+		
+		//define init of view view-add.html
+		$scope.initViewAdd = function () {
+			$scope.description="";
+            $scope.amount=0;
+            $scope.tag="";
+            $scope.transdate=
+			$scope.type="Expense";
+			var d=new Date();
+    		var year=d.getFullYear();
+			var month=d.getMonth()+1;
+    		if (month<10){
+      			month="0" + month;
+			}
+    		var day=d.getDate();
+    		$scope.transdate=year + "-" + month + "-" + day
+		}
+		
+		//initialize view-add view
+		$scope.initViewAdd();
         
         //add a new transaction to the $scope.currentUser's 
 		$scope.addTransaction = function () {
@@ -13,6 +33,7 @@ buxferModule.controller('GlobalController',
             t0.amount=$scope.amount;
             t0.tags=$scope.tag;
             t0.date=$scope.transdate;
+			t0.type=$scope.type;
             
 			//get the current user
             user0 = $scope.currentUser;
@@ -24,6 +45,11 @@ buxferModule.controller('GlobalController',
            
 			//persist the model to the local storage
             ServiceBuxferModel.commit();
+			
+			//show message
+			alert("Transaction added!");
+			//reset view-add
+			$scope.initViewAdd();
         }
         
         //Add a new user in the app
@@ -48,6 +74,7 @@ buxferModule.controller('GlobalController',
 			//TODO: check why $scope.currentUser must be explicitly refreshed while $scope.users
             //is refreshed automatically
             $scope.currentUser = ServiceBuxferModel.buxferModel.currentUser;
+			
             
             
         }
@@ -143,6 +170,13 @@ buxferModule.controller('GlobalController',
         }
 		 
         
+		
+		//refresh localtag array from Buxfer server
+		$scope.refreshTag = function () {
+		
+		}
+		
+		
 });
 
 

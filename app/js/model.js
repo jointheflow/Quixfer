@@ -147,7 +147,7 @@ function LocalTransaction () {
     this.status='created';//created, saved, sending, error
     this.date='';
     this.amount=0;
-    this.type='expense';
+    this.type='expense'; //or income
     this.tags='';
 }
 //************************BuxferResult*********************
