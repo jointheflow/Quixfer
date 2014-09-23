@@ -1,0 +1,16 @@
+<div ng-controller="GlobalController">
+			<h2>Setting view</h2> 
+            <p>Current user: {{currentUser.username}}, ({{currentUser.transactionList.length}})</p>
+			User:<input type="text" ng-model="username"/>
+			Password:<input type="password" ng-model="password"/>
+			Save Password <input type="number" ng-model="savepassword"/>
+			<button ng-click="addUser()">Add User</button>
+
+			
+			<ul>
+
+			<li ng-repeat="user in users">
+				{{ user.username }} <button ng-click="setCurrent(user)"> Set as Current </button><button ng-click="removeUser(user.username)"> Remove User </button>
+			</li>
+			</ul>
+		</div> 
