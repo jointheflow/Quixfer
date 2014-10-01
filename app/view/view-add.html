@@ -1,31 +1,37 @@
 <div ng-controller="GlobalController">
-			<h2>Add Transaction view</h2> 
-            <p>Current user: {{currentUser.username}}, ({{currentUser.transactionList.length}})</p>
-			<div class="table-responsive">
-				<table class="table">
-				<tr>
-					<td>Date</td><td><input type="date" placeholder="yyyy-MM-dd" ng-model="transdate"/></td>	
+			<div> <p class="bg-primary">  Add Transaction </p> </div>
+            
+			<form name="addTransactionForm" novalidate>
+				<div class="table-responsive">
+					<table class="table">
+					<tr>
+						<td>Date</td><td><input type="date" placeholder="yyyy-MM-dd" ng-model="transdate" required/></td>	
 
-				</tr>
-				<tr>
-					<td>Description</td><td><input type="text" ng-model="description"/></td>
-				</tr>
-				<tr>
-					<td>Amount</td><td><input type="number" ng-model="amount"/></td>	
-				</tr>
-				<tr>
-					<td>Tag</td><td><input type="text" ng-model="tag"/></td>	
-				</tr>
-				<tr>
-					<td>Type</td><td><select ng-model="type" class="form-control">
-  										<option value="Expense" selected="selected">Expense</option>
-  										<option value="Income">Income</option>
-  										
-						</select></td>	
-				</tr>
-				
-				<tr><td></td><td align="right"><button type="button" class="btn btn-default btn-lg" ng-click="addTransaction()"><span class="glyphicon glyphicon-plus"></span> Add</button></td></tr>
-					
-				</table>
-			</div>
+					</tr>
+					<tr>
+						<td>Description</td><td><input type="text" name="description" ng-model="description" required/>
+						<!--validation message-->
+						<div ng-show="addTransactionForm.description.$invalid" class="text-warning"> Insert a transaction description! </div></td>
+
+                		
+					</tr>
+					<tr>
+						<td>Amount</td><td><input type="number" ng-model="amount"/></td>	
+					</tr>
+					<tr>
+						<td>Tag</td><td><input type="text" ng-model="tag"/></td>	
+					</tr>
+					<tr>
+						<td>Type</td><td><select ng-model="type" class="form-control">
+											<option value="Expense" selected="selected">Expense</option>
+											<option value="Income">Income</option>
+
+							</select></td>	
+					</tr>
+
+					<tr><td></td><td align="right"><button type="button" class="btn btn-default btn-lg" ng-click="addTransaction()" ng-disabled="addTransactionForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Add</button></td></tr>
+
+					</table>
+				</div>
+			</form>
 </div>
