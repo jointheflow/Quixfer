@@ -154,8 +154,8 @@ buxferModule.controller('GlobalController',
                         });
                         
                         addTransPromiseResponse.error(function(data, status, headers, config) {
-                        	console.error("Add transaction failed, AJAX failed:"+data);
-                        	throw new Error("Add transaction failed, AJAX failed:"+data);
+                        	buxferResult = ServiceBuxferYQL.manageDoAddTransactionError(data);
+                        	throw new Error(buxferResult.msg);
                         });
                     }
                 }else {

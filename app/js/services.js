@@ -148,7 +148,7 @@ buxferModule.service('ServiceBuxferYQL', function($http) {
 	this.doAddTransaction = function (token, transaction) {
 	   var queryUrl = BYC.buxferUrlAPI + BYC.buxferAddTransAPI +"token=" + token + "&format=sms&text=" + transaction.description + (transaction.type=="expense"?" ":" +") + transaction.amount + " tags:" + transaction.tags + " date:" + transaction.date;
         console.log(queryUrl);
-        return $http({method: 'POST', url: queryUrl, id: transaction.id});//passing id of transaction in the config object to manage asyncronous results
+        return $http({method: 'GET', url: queryUrl, id: transaction.id});//passing id of transaction in the config object to manage asyncronous results
 	};
     
     
@@ -198,6 +198,16 @@ buxferModule.service('ServiceBuxferYQL', function($http) {
 		buxferResult.msg = data.error.message;
     	return buxferResult;
 	};
+	
+	 this.manageDoAddTransactionError = function (data) {
+		var buxferResult = new BuxferResult();
+    	console.log("error, message is:"+data.error.message);
+		buxferResult.status = BYC.resultStatusERROR;
+		buxferResult.value = BYC.errorCodeDoAddTransactionFailed;
+		buxferResult.msg = data.error.message;
+    	return buxferResult;
+	};
+	
 	
 });
 	

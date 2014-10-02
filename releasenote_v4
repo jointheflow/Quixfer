@@ -2,4 +2,4 @@ Release note v4
 - changed access to buxfer rest services. There is a diret access without passing through Yhaoo
 - 
 
-start chrome using "chrome.exe --disable-web-security"
+start chrome using "chrome.exe --disable-web-security -–allow-file-access-from-files"
