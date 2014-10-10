@@ -1,17 +1,46 @@
 <div ng-controller="GlobalController">
-			<div> <p class="bg-primary"> Setting view </p> </div>
+		
+	<div> <p class="bg-primary"> Setting view </p> </div>
 	
-            <p>Current user: {{currentUser.username}}, ({{currentUser.transactionList.length}})</p>
-			User:<input type="text" ng-model="username"/>
-			Password:<input type="password" ng-model="password"/>
-			Save Password <input type="number" ng-model="savepassword"/>
-			<button ng-click="addUser()">Add User</button>
+	<form name="settingUser" novalidate>
+		<div class="table-responsive">
+			<table class="table">
+			<tr>
+				<td>User</td><td><input type="text" name="username" ng-model="username" required/>
+				<!--validation user-->
+				<div ng-show="settingUser.username.$invalid" class="text-warning"> Insert a user! </div></td>
 
+
+			</tr>
+			<tr>
+				<td>Password</td><td><input name="password" type="password" ng-model="password"/>
+				<!--validation password-->
+				<div ng-show="settingUser.password.$invalid" class="text-warning"> Insert a password! </div></td>	
+			</tr>
+			<tr><td></td><td align="right"><button type="button" class="btn btn-default btn-sm" ng-click="addUser()" ng-disabled="settingUser.$invalid"><span class="glyphicon glyphicon-plus"></span> Add User</button></td></tr>
+
+			</table>
+		</div>
+		<div class="table-responsive">
+					<table class="table table-striped" >
+						<tr> 
+							<!--th>Id</th-->
+							<th>User</th>
+							<th>Action</th>
+							
+						</tr>
+						
+						<tr data-ng-repeat="user in users">
+							
+							<td>{{user.username}}</td>
+							
+							<td><button type="button" class="btn btn-default btn-xs" ng-click="setCurrent(user)"><span class="glyphicon glyphicon-star"></span> Set current</button><button type="button"  class="btn btn-default btn-xs" ng-click="removeUser(user.username)"> <span class="glyphicon glyphicon-minus"></span> Cancel</button></td>
+						</tr>
+						
+					</table>
+		</div>
+		
+	</form>	
+	
 			
-			<ul>
-
-			<li ng-repeat="user in users">
-				{{ user.username }} <button ng-click="setCurrent(user)"> Set as Current </button><button ng-click="removeUser(user.username)"> Remove User </button>
-			</li>
-			</ul>
-		</div> 
+</div> 

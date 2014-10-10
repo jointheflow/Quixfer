@@ -1,7 +1,9 @@
 <div ng-controller="GlobalController">
-	 <div><p class="bg-primary"> Sync view </p></div>
+
 	
-	 <form name="addTransactionForm" novalidate>
+	<div><p class="bg-primary"> Sync view </p></div>
+	
+	 <form name="SynchTransactionForm" novalidate>
 				<div class="table-responsive">
 					<table class="table table-striped" >
 						<tr> 
@@ -21,7 +23,7 @@
 							<td>{{transaction.amount}}<!--input type="number" ng-model=transaction.amount /--></td>
 							<td>{{transaction.tags}}<!--input type="text" ng-model=transaction.tags /--></td>
 							<td>{{transaction.type}}<!--input type="text" ng-model=transaction.type /--></td>
-							<td><!--button ng-click="updateTransaction(transaction)">Save</button--> <button type="button" class="btn btn-default btn-lg"  ng-click="removeTransaction(transaction.id)"><span class="glyphicon glyphicon-minus"></span> Remove</button><p></td>
+							<td><!--button ng-click="updateTransaction(transaction)">Save</button--> <button type="button" class="btn btn-default btn-xs"  ng-click="removeTransaction(transaction.id)"><span class="glyphicon glyphicon-minus"></span> Cancel</button><p></td>
 						</tr>
 						
 					</table>
@@ -30,6 +32,6 @@
 	
 	
 	
-		<button type="button" class="btn btn-default btn-lg" ng-click="synchronize()"><span class="glyphicon glyphicon-transfer"></span> Synch</button><p>
+		<button type="button" class="btn btn-default btn-sm" ng-click="synchronize()"><span class="glyphicon glyphicon-transfer"></span> Synch</button><p>
  
 </div>
