@@ -78,6 +78,9 @@ buxferModule.controller('GlobalController',
 			//TODO: check why $scope.currentUser must be explicitly refreshed while $scope.users
             //is refreshed automatically
             $scope.currentUser = ServiceBuxferModel.buxferModel.currentUser;
+            //reload the page to update user info on navbar
+            window.location.reload();
+            
 			
             
             
@@ -96,6 +99,8 @@ buxferModule.controller('GlobalController',
 			//TODO: check why $scope.currentUser must be explicitly refreshed while $scope.users
             //is refreshed automatically
             $scope.currentUser = ServiceBuxferModel.buxferModel.currentUser;
+            //reload the page to update user info on navbar
+            window.location.reload();
         
         } 
         
@@ -109,6 +114,9 @@ buxferModule.controller('GlobalController',
             //TODO: check why $scope.currentUser must be explicitly refreshed while $scope.users
             //is refreshed automatically
             $scope.currentUser = ServiceBuxferModel.buxferModel.currentUser;
+            window.location.reload();
+            //reload the page to update user info on navbar
+            window.location.reload();
         
         }
         
