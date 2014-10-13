@@ -2,8 +2,8 @@ Release note v4
 - changed access to buxfer rest services. There is a diret access without passing through Yhaoo
 - 
 
-start chrome using "chrome.exe --disable-web-security -–allow-file-access-from-files"
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-security -–allow-file-access-from-files
+windows: start chrome using "chrome.exe --disable-web-security -–allow-file-access-from-files"
+mac: /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-security -–allow-file-access-from-files
 
 user/pwd: BuxferQuickClientMobile/BuxferQuickClientMobile
 user/pwd: _smartbuxfer_/_smartbuxfer_

@@ -142,6 +142,14 @@ buxferModule.controller('GlobalController',
             ServiceBuxferModel.commit();
                  
         }
+		
+		
+		$scope.updateTags = function (tagList) {
+			ServiceBuxferModel.buxferModel.currentUser.tagList=tagList;
+			//commit the model to the local storage
+            ServiceBuxferModel.commit();
+		
+		}
         
         $scope.synchronize = function () {
             var buxferResult;
@@ -153,13 +161,16 @@ buxferModule.controller('GlobalController',
                 //get buxferResult from xml data
                 buxferResult = ServiceBuxferYQL.manageDoLoginSuccess(data);
                 console.log("buxferResult.status:"+buxferResult.status+",   buxferResult.value:"+buxferResult.value+", buxferResult.msg:"+buxferResult.msg);
-                //if login is ok, use token returned and synchronize all transactions in the model
+                //if login is ok, use token returned and synchronize all transactions in the model and synch tag from server
                 if (buxferResult.status == BYC.resultStatusOK) {
                     var currUser =ServiceBuxferModel.buxferModel.currentUser;
-                    var transList=currUser.transactionList;    
+                    var transList=currUser.transactionList;  
+					
+					
+					//synchro all transaction
                     for (var i=0; i<transList.length; i++) {
                         console.log("add:"+transList[i]);
-                        var addTransPromiseResponse = ServiceBuxferYQL.doAddTransaction(buxferResult.value, transList[i])
+                        var addTransPromiseResponse = ServiceBuxferYQL.doAddTransaction(buxferResult.value, transList[i]);
                         
                         addTransPromiseResponse.success(function(data, status, headers, config) {
                             //remove synchronized transaction, the transaction id is contained in the config parameter
@@ -171,6 +182,27 @@ buxferModule.controller('GlobalController',
                         	throw new Error(buxferResult.msg);
                         });
                     }
+					
+					
+					
+					//get Tag from server
+					var getTagPromiseResponse = ServiceBuxferYQL.doGetTags(buxferResult.value);
+					//manage get tag ok
+					getTagPromiseResponse.success(function(data, status, headers, config) {
+						//add tags to the model and save it
+						buxferResult = ServiceBuxferYQL.manageDoGetTagSuccess(data);
+						$scope.updateTags(buxferResult.value);
+						
+					});
+					//manage get tag error
+					getTagPromiseResponse.error(function(data, status, headers, config) {
+						buxferResult = ServiceBuxferYQL.manageDoGetTagError(data);    
+						console.error(buxferResult.msg);
+						throw new Error(buxferResult.msg);
+					});
+			
+					
+					
                 }else {
                     //log and show error
                     console.error(buxferResult.status+" "+buxferResult.msg);

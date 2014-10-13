@@ -154,12 +154,35 @@ buxferModule.service('ServiceBuxferYQL', function($http) {
     
 	
 	this.doGetTags = function (token) {
-		 var queryUrl = BYC.buxferUrlAPI + BYC.buxferTagsAPI +"token=" + token;
+		var queryUrl = BYC.buxferUrlAPI + BYC.buxferTagsAPI +"token=" + token;
         console.log(queryUrl);
         return $http({method: 'GET', url: queryUrl});
 	};
     
-    
+	
+	this.manageDoGetTagSuccess = function (data) {
+		var dataObj= data;
+		var buxferResult = new BuxferResult();
+		var tagList = [];
+		if (dataObj.response != null) {
+			
+			for (var i=0; i<dataObj.response.tags.length; i++) {
+				tagList.push(dataObj.response.tags[i]['key-tag'].name);
+			}
+			buxferResult.value=tagList;
+		
+		} else if (data.result.error != null) {
+		//TODO
+		}else {
+		//TODO
+		}
+		return buxferResult;
+	};
+	//TODO
+    this.manageDoGetTagError = function (data) {
+	
+	};
+	
     // manage YQL xml response
     this.manageDoLoginSuccess = function (data) {
     // return some json message or exception 
