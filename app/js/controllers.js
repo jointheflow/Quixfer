@@ -29,7 +29,7 @@ buxferModule.controller('GlobalController',
 		$scope.initViewAdd();
         
         //add a new transaction to the $scope.currentUser's 
-		$scope.addTransaction = function () {
+		$scope.addTransaction = function (transType) {
             var t0, user0;
             //create the transaction
 			t0= new LocalTransaction();
@@ -37,7 +37,12 @@ buxferModule.controller('GlobalController',
             t0.amount=$scope.amount;
             t0.tags=$scope.tag;
             t0.date=$scope.transdate;
-			t0.type=$scope.type;
+			if (transType != null) {
+				t0.type = transType; 
+			
+			}else {
+				t0.type=$scope.type;
+			}
             
 			//get the current user
             user0 = $scope.currentUser;

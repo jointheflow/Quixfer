@@ -22,15 +22,15 @@
 					<tr>
 						<td>Tag</td><td><input type="text" ng-model="tag"/></td>	
 					</tr>
-					<tr>
+					<!--tr>
 						<td>Type</td><td><select ng-model="type" class="form-control">
 											<option value="Expense" selected="selected">Expense</option>
 											<option value="Income">Income</option>
 
 							</select></td>	
-					</tr>
+					</tr-->
 
-					<tr><td></td><td align="right"><button type="button" class="btn btn-default btn-sm" ng-click="addTransaction()" ng-disabled="addTransactionForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Add</button></td></tr>
+					<tr><td></td><td align="right"><button type="button" class="btn btn-default btn-sm" ng-click="addTransaction('Expense')" ng-disabled="addTransactionForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Expense</button><button type="button" class="btn btn-default btn-sm" ng-click="addTransaction('Income')" ng-disabled="addTransactionForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Income</button></td></tr>
 
 					</table>
 				</div>

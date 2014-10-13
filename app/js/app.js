@@ -1,5 +1,5 @@
 // Create a new module
-var buxferModule = angular.module('buxferModule', ['ngRoute']);
+var buxferModule = angular.module('buxferModule', ['ngRoute', 'ui.bootstrap']);
 
 // configure application routes
 buxferModule.config(['$routeProvider',
