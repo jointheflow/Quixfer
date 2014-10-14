@@ -20,7 +20,7 @@
 						<td>Amount</td><td><input type="number" ng-model="amount"/></td>	
 					</tr>
 					<tr>
-						<td>Tag</td><td><input type="text" ng-model="tag"/></td>	
+						<td>Tag</td><td> <div> <input type="text" ng-model="tagtext"> </div> <div ng-dropdown-multiselect="" options="tagdata" selected-model="tag" extra-settings="tagdatasetting"> </div>  </td>	
 					</tr>
 					<!--tr>
 						<td>Type</td><td><select ng-model="type" class="form-control">

@@ -4,12 +4,30 @@ buxferModule.controller('GlobalController',
         $scope.users = ServiceBuxferModel.buxferModel.users;
         $scope.currentUser = ServiceBuxferModel.buxferModel.currentUser;
 		
+		//refresh localtag array from Buxfer server
+		$scope.refreshTagData = function (modelTagList) {
+			tagData = [];
+			for (var i=0; i<modelTagList.length; i++) {
+				tagData.push({id: i, label: modelTagList[i]});
+			}
+			return tagData;
+		}
+		
 		//define init of view view-add.html
 		$scope.initViewAdd = function () {
 			$scope.description="";
             $scope.amount=0;
-            $scope.tag="";
-            $scope.transdate=
+			$scope.tagtext ="";
+            
+			//start managing load of multiple item dropdown menù for tags attribute 
+			$scope.tag= [];
+			//populate tagdata with tags in the model associatew with the current user
+			$scope.tagdata = $scope.refreshTagData($scope.currentUser.tagList);
+			//use label as id, and show max 10 option selected in the menù
+			$scope.tagdatasetting= {smartButtonMaxItems: 10, displayProp: 'label', idProp: 'label'};
+			//end managing load of multiple item dropdown menù for tags attribute
+			
+			$scope.transdate=
 			$scope.type="Expense";
 			var d=new Date();
     		var year=d.getFullYear();
@@ -35,7 +53,19 @@ buxferModule.controller('GlobalController',
 			t0= new LocalTransaction();
             t0.description=$scope.description;
             t0.amount=$scope.amount;
-            t0.tags=$scope.tag;
+            //concatenate all tags selected in the dropdown menù
+			for (var i=0; i<$scope.tag.length; i++) {
+				if (i==0) t0.tags=$scope.tag[i].id;
+				else t0.tags=t0.tags + ","+$scope.tag[i].id;
+			}
+			//add free tag text if exists
+			if ($scope.tagtext !=null ) {
+				if (t0.tags.length>0 )
+					t0.tags=t0.tags+","+$scope.tagtext;
+			    else
+					t0.tags=$scope.tagtext;
+			}
+			
             t0.date=$scope.transdate;
 			if (transType != null) {
 				t0.type = transType; 
@@ -220,10 +250,9 @@ buxferModule.controller('GlobalController',
 		 
         
 		
-		//refresh localtag array from Buxfer server
-		$scope.refreshTag = function () {
 		
-		}
+		
+		
 		
 		
 });

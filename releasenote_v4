@@ -2,6 +2,12 @@ Release note v4
 - changed access to buxfer rest services. There is a diret access without passing through Yhaoo
 - 
 
+dependencies:
+- bootstrap 3 (only css)
+- ui-bootstrap
+- http://ngmodules.org/modules/angularjs-dropdown-multiselect
+
+
 windows: start chrome using "chrome.exe --disable-web-security -–allow-file-access-from-files"
 mac: /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-security -–allow-file-access-from-files
 
