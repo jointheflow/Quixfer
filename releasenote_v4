@@ -7,6 +7,8 @@ dependencies:
 - ui-bootstrap
 - http://ngmodules.org/modules/angularjs-dropdown-multiselect
 
+- http://angular-translate.github.io/#
+
 
 windows: start chrome using "chrome.exe --disable-web-security -–allow-file-access-from-files"
 mac: /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-security -–allow-file-access-from-files
