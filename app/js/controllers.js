@@ -7,8 +7,10 @@ buxferModule.controller('GlobalController',
 		//refresh localtag array from Buxfer server
 		$scope.refreshTagData = function (modelTagList) {
 			tagData = [];
-			for (var i=0; i<modelTagList.length; i++) {
-				tagData.push({id: i, label: modelTagList[i]});
+			if (modelTagList !=null) {
+				for (var i=0; i<modelTagList.length; i++) {
+					tagData.push({id: i, label: modelTagList[i]});
+				}
 			}
 			return tagData;
 		}
@@ -22,7 +24,8 @@ buxferModule.controller('GlobalController',
 			//start managing load of multiple item dropdown menù for tags attribute 
 			$scope.tag= [];
 			//populate tagdata with tags in the model associatew with the current user
-			$scope.tagdata = $scope.refreshTagData($scope.currentUser.tagList);
+			if ($scope.currentUser!=null)
+				$scope.tagdata = $scope.refreshTagData($scope.currentUser.tagList);
 			//use label as id, and show max 10 option selected in the menù
 			$scope.tagdatasetting= {smartButtonMaxItems: 10, displayProp: 'label', idProp: 'label'};
 			//end managing load of multiple item dropdown menù for tags attribute
