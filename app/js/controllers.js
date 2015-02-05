@@ -1,6 +1,10 @@
 buxferModule.controller('GlobalController', 
+    
     function ($scope, ServiceBuxferModel, ServiceBuxferYQL) {
-        //initialize the scope with the users from local storage
+        
+        //fetching buxfer model from local storage
+        ServiceBuxferModel.fetchFromLocalStorage();
+        //initialize the scope with the users fetched from local storage
         $scope.users = ServiceBuxferModel.buxferModel.users;
         $scope.currentUser = ServiceBuxferModel.buxferModel.currentUser;
 		
@@ -149,12 +153,10 @@ buxferModule.controller('GlobalController',
             ServiceBuxferModel.commit();
             
             //refresh scope's user
-            //TODO: check why $scope.currentUser must be explicitly refreshed while $scope.users
-            //is refreshed automatically
             $scope.currentUser = ServiceBuxferModel.buxferModel.currentUser;
+            //TODO: implement a better solution ti refresh current user value in the navbar!!!
             window.location.reload();
-            //reload the page to update user info on navbar
-            window.location.reload();
+            
         
         }
         

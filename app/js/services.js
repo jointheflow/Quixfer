@@ -7,11 +7,12 @@
 buxferModule.service('ServiceBuxferModel', function() {
     
     this.serviceName = 'ServiceBuxferModel';
+    //defining a new empty instance of buxfer model
     this.buxferModel = new BuxferModel();
     
     //refresh the buxfer model reading the local storage
-    this.refresh = function() {
-        console.log(this.serviceName+".refresh() begin");
+    this.fetchFromLocalStorage = function() {
+        console.log(this.serviceName+".fetchFromLocalStorage() begin");
         var userStorage, user, currentUserName;
 		//reset the users array
         this.buxferModel.users = [];
@@ -50,10 +51,10 @@ buxferModule.service('ServiceBuxferModel', function() {
 				this.buxferModel.currentUser = this.buxferModel.users[i];
 			} 
 		}
-        console.log(this.serviceName+".refresh() end");
+        console.log(this.serviceName+".fetchFromLocalStorage() end");
     };
     
-    this.refresh();
+    //this.refresh();
         
     //save the user using username as a key
     this.saveUser = function(aUser) {
