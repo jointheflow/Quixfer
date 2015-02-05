@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="buxferModule">
+<html ng-app="buxferModule" ng-controller="GlobalController">
 <head>
     <title>Buxfer Quick Client Mobile (angular release)</title>
     <script type="text/javascript" src="lib/angular/angular.min.js"></script>
@@ -12,6 +12,7 @@
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/services.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
+	<script type="text/javascript" src="js/add-controller.js"></script>
     <script type="text/javascript" src="js/model.js"></script>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +29,7 @@
 <body>
 	
 <header>
-    <div class="navbar navbar-default navbar-fixed-top" ng-controller="GlobalController">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             	<a class="navbar-brand" href="#">SmartBuxfer</a>
                 <p class="navbar-text navbar-right">User: <b>{{currentUser.username}}</b>, ({{currentUser.transactionList.length}})</p>

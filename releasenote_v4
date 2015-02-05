@@ -1,6 +1,10 @@
 Release note v4
-- changed access to buxfer rest services. There is a diret access without passing through Yhaoo
-- 
+
+TODO:
+- add user use case: after user adding, do the login on buxfer to verify that userid and password exists on buxfer platform
+- code refactoring: create different controller per view
+
+
 
 dependencies:
 - bootstrap 3 (only css)
@@ -15,3 +19,10 @@ mac: /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-we
 
 user/pwd: BuxferQuickClientMobile/BuxferQuickClientMobile
 user/pwd: _smartbuxfer_/_smartbuxfer_
+
+
+INFO:
+-CONDIVISIONE DELLO SCOPE FRA CONTROLLER-
+Per rendere accessibile il medesimo scope a controller differenti è necessaria una relazione pader-figlio.
+Così facendo possi definire un controller globale a livello di applicazione nel DOM e inserire come controller
+figli tutti quelli che mi servono specifici per le singole funzioni. Così facendo dai figli avrò accesso alle prorietà definite nello scope padre.

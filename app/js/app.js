@@ -8,7 +8,7 @@ buxferModule.config(['$routeProvider',
       when('/add', {
         //templateUrl: 'view-add',
 		templateUrl: 'view/view-add.html',
-        controller: 'GlobalController'
+        controller: 'AddController'
       }).
       when('/settings', {
         //templateUrl: 'view-settings',
