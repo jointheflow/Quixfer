@@ -3,6 +3,9 @@ buxferModule.controller('AddController',
     
     function ($scope, ServiceBuxferModel) {
         
+        //list of tag for current user
+        $scope.tagdata = [];
+        
         //refresh localtag array from Buxfer server
 		$scope.refreshTagData = function (modelTagList) {
 			tagData = [];
