@@ -13,17 +13,17 @@ buxferModule.config(['$routeProvider',
       when('/settings', {
         //templateUrl: 'view-settings',
 		templateUrl: 'view/view-settings.html',
-        controller: 'GlobalController'
+        controller: 'SettingsController'
       }).
       when('/about', {
         //templateUrl: 'view-about',
-		templateUrl: 'view/view-about.html',
-        controller: 'GlobalController'
+		templateUrl: 'view/view-about.html'
+        //controller: 'GlobalController'
       }).
 	  when('/synch', {
         //templateUrl: 'view-about',
 		templateUrl: 'view/view-sync.html',
-        controller: 'GlobalController'
+        controller: 'SyncController'
       }).
       otherwise({
         redirectTo: '/add',

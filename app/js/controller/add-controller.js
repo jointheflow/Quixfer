@@ -1,7 +1,7 @@
 /*AddController exposes all function necessary to the add-view. Since is used inside GlobalController it can see all properties defined in the GlobalController scope (parent)*/
 buxferModule.controller('AddController', 
     
-    function ($scope, ServiceBuxferModel, ServiceBuxferYQL) {
+    function ($scope, ServiceBuxferModel) {
         
         //refresh localtag array from Buxfer server
 		$scope.refreshTagData = function (modelTagList) {
@@ -93,19 +93,6 @@ buxferModule.controller('AddController',
 			$scope.initViewAdd();
         };
         
-      	
-		$scope.updateTags = function (tagList) {
-			ServiceBuxferModel.buxferModel.currentUser.tagList=tagList;
-			//commit the model to the local storage
-            ServiceBuxferModel.commit();
-		
-		};
-        
-       
-		
-		
-		
-		
 });
 
 
