@@ -1,5 +1,5 @@
 // Create a new module
-var buxferModule = angular.module('buxferModule', ['ngRoute', 'ui.bootstrap', 'angularjs-dropdown-multiselect', 'ngCordova']);
+var buxferModule = angular.module('buxferModule', ['ngRoute', 'ui.bootstrap', 'angularjs-dropdown-multiselect', 'ngCordova', 'ngTagsInput']);
 
 // configure application routes
 buxferModule.config(['$routeProvider',

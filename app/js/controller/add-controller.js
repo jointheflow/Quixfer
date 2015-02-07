@@ -1,17 +1,23 @@
 /*AddController exposes all function necessary to the add-view. Since is used inside GlobalController it can see all properties defined in the GlobalController scope (parent)*/
 buxferModule.controller('AddController', 
     
-    function ($scope, ServiceBuxferModel) {
+    function ($scope,$q, ServiceBuxferModel) {
         
         //list of tag for current user
         $scope.tagdata = [];
         
+        $scope.loadTags = function(query) {
+            var deferred = $q.defer();
+            deferred.resolve($scope.tagexample);
+            return deferred.promise;    
+            
+        };
         //refresh localtag array from Buxfer server
 		$scope.refreshTagData = function (modelTagList) {
 			tagData = [];
 			if (modelTagList !=null) {
 				for (var i=0; i<modelTagList.length; i++) {
-					tagData.push({id: i, label: modelTagList[i]});
+					tagData.push({id: i, name: modelTagList[i]});
 				}
 			}
 			return tagData;
@@ -24,10 +30,11 @@ buxferModule.controller('AddController',
 			$scope.tagtext ="";
             
 			//start managing load of multiple item dropdown menù for tags attribute 
-			$scope.tag= [];
+			$scope.tagdata = [];
 			//populate tagdata with tags in the model associatew with the current user
 			if ($scope.currentUser!=null)
-				$scope.tagdata = $scope.refreshTagData($scope.currentUser.tagList);
+				
+                $scope.tagdata = $scope.refreshTagData($scope.currentUser.tagList);
 			//use label as id, and show max 10 option selected in the menù
 			$scope.tagdatasetting= {smartButtonMaxItems: 10, displayProp: 'label', idProp: 'label'};
 			//end managing load of multiple item dropdown menù for tags attribute

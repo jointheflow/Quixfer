@@ -2,7 +2,9 @@
 	
 		<div> <p class="bg-primary">  Add Transaction </p> </div>
             
-			<form name="addTransactionForm" novalidate>
+			
+            
+            <form name="addTransactionForm" novalidate>
 				<div class="table-responsive">
 					<table class="table">
 					<tr>
@@ -19,9 +21,13 @@
 					<tr>
 						<td>Amount</td><td><input type="number" ng-model="amount"/></td>	
 					</tr>
-					<tr>
+					<!--tr>
 						<td>Tag</td><td> <div> <input type="text" ng-model="tagtext"> </div> <div ng-dropdown-multiselect="" options="tagdata" selected-model="tag" extra-settings="tagdatasetting"> </div>  </td>	
-					</tr>
+					</tr-->
+                    <tr>
+						<td> tags</td><td><tags-input ng-model="tagtext"><auto-complete source="loadTags($query)"></auto-complete></tags-input></td>
+					</tr>    
+                        
 					<!--tr>
 						<td>Type</td><td><select ng-model="type" class="form-control">
 											<option value="Expense" selected="selected">Expense</option>
@@ -35,4 +41,5 @@
 					</table>
 				</div>
 			</form>
+    
 </div>

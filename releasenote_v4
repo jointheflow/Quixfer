@@ -2,16 +2,15 @@ Release note v4
 
 TODO:
 - add user use case: after user adding, do the login on buxfer to verify that userid and password exists on buxfer platform
-- code refactoring: create different controller per view
+
 
 
 
 dependencies:
 - bootstrap 3 (only css)
 - ui-bootstrap
-- http://ngmodules.org/modules/angularjs-dropdown-multiselect
-
 - http://angular-translate.github.io/#
+- http://mbenford.github.io/ngTagsInput/gettingstarted
 
 
 windows: start chrome using "chrome.exe --disable-web-security -–allow-file-access-from-files"
@@ -26,3 +25,5 @@ INFO:
 Per rendere accessibile il medesimo scope a controller differenti è necessaria una relazione pader-figlio.
 Così facendo possi definire un controller globale a livello di applicazione nel DOM e inserire come controller
 figli tutti quelli che mi servono specifici per le singole funzioni. Così facendo dai figli avrò accesso alle prorietà definite nello scope padre.
+
+

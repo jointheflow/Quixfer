@@ -8,6 +8,8 @@ buxferModule.controller('GlobalController',
         //initialize the scope with the users fetched from local storage
         $scope.users = ServiceBuxferModel.buxferModel.users;
         $scope.currentUser = ServiceBuxferModel.buxferModel.currentUser;
+        $scope.tagtext= [];
+        $scope.tagexample = [{ text: 'Tag1' }, { text: 'Tag2' },{ text: 'Tag3' }] ;
         
        
 });
