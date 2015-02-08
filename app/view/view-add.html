@@ -25,7 +25,7 @@
 						<td>Tag</td><td> <div> <input type="text" ng-model="tagtext"> </div> <div ng-dropdown-multiselect="" options="tagdata" selected-model="tag" extra-settings="tagdatasetting"> </div>  </td>	
 					</tr-->
                     <tr>
-						<td> tags</td><td><tags-input ng-model="tagtext"><auto-complete source="loadTags($query)"></auto-complete></tags-input></td>
+						<td> tags</td><td><tags-input ng-model="tagtext"><auto-complete source="loadTags($query)" max-results-to-show="20"></auto-complete></tags-input></td>
 					</tr>    
                         
 					<!--tr>

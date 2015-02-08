@@ -129,13 +129,16 @@ User.prototype.indexOfTransaction = function (transactionId) {
     }
     return null;
 
-}
+};
 
-//************************ LocalTag ************************
-//LocalTag definition
-function LocalTag(tagname) {
-    this.tagname= tagname;
-}
+
+//add a tag to the tagList only if tag not exists (e.g. 
+// not exist a LocalTag with the same tagname
+User.prototype.addTag = function (newLocalTag) {
+    if (this.tagList.indexOf(newLocalTag) < 0) {
+        this.tagList.push(newLocalTag);
+    }
+};
 
 
 

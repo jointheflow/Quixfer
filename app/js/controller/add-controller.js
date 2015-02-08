@@ -64,6 +64,13 @@ buxferModule.controller('AddController',
         //add a new transaction to the $scope.currentUser's 
 		$scope.addTransaction = function (transType) {
             var t0, user0;
+            
+            //get the current user
+            user0 = $scope.currentUser;
+            if (user0==null) {
+                throw "You must select a current user!"
+            }
+            
             //create the transaction
 			t0= new LocalTransaction();
             t0.description=$scope.description;
@@ -72,7 +79,10 @@ buxferModule.controller('AddController',
 			for (var i=0; i<$scope.tagtext.length; i++) {
 				if (i==0) t0.tags=$scope.tagtext[i].text;
 				else t0.tags=t0.tags + ","+$scope.tagtext[i].text;
+                //add each tag selected by the user to the current user localTagList 
+                //for the next insertion (added only if tag does not exists)
                 
+                user0.addTag($scope.tagtext[i].text);
                 
             }
 			//add free tag text if exists
@@ -91,11 +101,7 @@ buxferModule.controller('AddController',
 				t0.type=$scope.type;
 			}
             
-			//get the current user
-            user0 = $scope.currentUser;
-            if (user0==null) {
-                throw "You must select a current user!"
-            }
+			
 			//add transaction to the user
             user0.addTransaction(t0);
             
