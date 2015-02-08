@@ -8,7 +8,7 @@ buxferModule.controller('AddController',
         
         $scope.loadTags = function(query) {
             var deferred = $q.defer();
-            deferred.resolve($scope.tagexample);
+            deferred.resolve($scope.tagdata);
             return deferred.promise;    
             
         };
@@ -17,7 +17,11 @@ buxferModule.controller('AddController',
 			tagData = [];
 			if (modelTagList !=null) {
 				for (var i=0; i<modelTagList.length; i++) {
-					tagData.push({id: i, name: modelTagList[i]});
+					//adding element only if it does not exists!
+                    if (tagData.indexOf(modelTagList[i]) <0) {
+                        //tagData.push({id: i, name: modelTagList[i]});
+                        tagData.push(modelTagList[i]);
+                    }
 				}
 			}
 			return tagData;
@@ -33,8 +37,7 @@ buxferModule.controller('AddController',
 			$scope.tagdata = [];
 			//populate tagdata with tags in the model associatew with the current user
 			if ($scope.currentUser!=null)
-				
-                $scope.tagdata = $scope.refreshTagData($scope.currentUser.tagList);
+				$scope.tagdata = $scope.refreshTagData($scope.currentUser.tagList);
 			//use label as id, and show max 10 option selected in the menù
 			$scope.tagdatasetting= {smartButtonMaxItems: 10, displayProp: 'label', idProp: 'label'};
 			//end managing load of multiple item dropdown menù for tags attribute
@@ -65,19 +68,21 @@ buxferModule.controller('AddController',
 			t0= new LocalTransaction();
             t0.description=$scope.description;
             t0.amount=$scope.amount;
-            //concatenate all tags selected in the dropdown menù
-			for (var i=0; i<$scope.tag.length; i++) {
-				if (i==0) t0.tags=$scope.tag[i].id;
-				else t0.tags=t0.tags + ","+$scope.tag[i].id;
-			}
+            //concatenate all tags selected by the user and also new tags 
+			for (var i=0; i<$scope.tagtext.length; i++) {
+				if (i==0) t0.tags=$scope.tagtext[i].text;
+				else t0.tags=t0.tags + ","+$scope.tagtext[i].text;
+                
+                
+            }
 			//add free tag text if exists
-			if ($scope.tagtext !=null ) {
+			/*if ($scope.tagtext !=null ) {
 				if (t0.tags.length>0 )
 					t0.tags=t0.tags+","+$scope.tagtext;
 			    else
 					t0.tags=$scope.tagtext;
 			}
-			
+			*/
             t0.date=$scope.transdate;
 			if (transType != null) {
 				t0.type = transType; 
@@ -93,7 +98,9 @@ buxferModule.controller('AddController',
             }
 			//add transaction to the user
             user0.addTransaction(t0);
-           
+            
+            //TODO: add all new inserted tag to the current user
+            
 			//persist the model to the local storage
             ServiceBuxferModel.commit();
 			

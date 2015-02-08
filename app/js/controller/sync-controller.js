@@ -34,12 +34,12 @@ buxferModule.controller('SyncController',
         $scope.synchronize = function () {
             var buxferResult;
             //execute login service
-            var loginPromiseResponse = ServiceBuxferYQL.doLogin($scope.currentUser.username,    $scope.currentUser.password);
+            var loginPromiseResponse = ServiceBuxferAPI.doLogin($scope.currentUser.username,    $scope.currentUser.password);
             //manage success result
             loginPromiseResponse.success(function(data, status, headers, config) {
                 console.log("RESULT:"+data);
                 //get buxferResult from xml data
-                buxferResult = ServiceBuxferYQL.manageDoLoginSuccess(data);
+                buxferResult = ServiceBuxferAPI.manageDoLoginSuccess(data);
                 console.log("buxferResult.status:"+buxferResult.status+",   buxferResult.value:"+buxferResult.value+", buxferResult.msg:"+buxferResult.msg);
                 //if login is ok, use token returned and synchronize all transactions in the model and synch tag from server
                 if (buxferResult.status == BYC.resultStatusOK) {
@@ -50,7 +50,7 @@ buxferModule.controller('SyncController',
 					//synchro all transaction
                     for (var i=0; i<transList.length; i++) {
                         console.log("add:"+transList[i]);
-                        var addTransPromiseResponse = ServiceBuxferYQL.doAddTransaction(buxferResult.value, transList[i]);
+                        var addTransPromiseResponse = ServiceBuxferAPI.doAddTransaction(buxferResult.value, transList[i]);
                         
                         addTransPromiseResponse.success(function(data, status, headers, config) {
                             //remove synchronized transaction, the transaction id is contained in the config parameter
@@ -58,7 +58,7 @@ buxferModule.controller('SyncController',
                         });
                         
                         addTransPromiseResponse.error(function(data, status, headers, config) {
-                        	buxferResult = ServiceBuxferYQL.manageDoAddTransactionError(data);
+                        	buxferResult = ServiceBuxferAPI.manageDoAddTransactionError(data);
                         	throw new Error(buxferResult.msg);
                         });
                     }
@@ -66,17 +66,17 @@ buxferModule.controller('SyncController',
 					
 					
 					//get Tag from server
-					var getTagPromiseResponse = ServiceBuxferYQL.doGetTags(buxferResult.value);
+					var getTagPromiseResponse = ServiceBuxferAPI.doGetTags(buxferResult.value);
 					//manage get tag ok
 					getTagPromiseResponse.success(function(data, status, headers, config) {
 						//add tags to the model and save it
-						buxferResult = ServiceBuxferYQL.manageDoGetTagSuccess(data);
+						buxferResult = ServiceBuxferAPI.manageDoGetTagSuccess(data);
 						$scope.updateTags(buxferResult.value);
 						
 					});
 					//manage get tag error
 					getTagPromiseResponse.error(function(data, status, headers, config) {
-						buxferResult = ServiceBuxferYQL.manageDoGetTagError(data);    
+						buxferResult = ServiceBuxferAPI.manageDoGetTagError(data);    
 						console.error(buxferResult.msg);
 						throw new Error(buxferResult.msg);
 					});
@@ -92,7 +92,7 @@ buxferModule.controller('SyncController',
             
             //manage error result
             loginPromiseResponse.error(function(data, status, headers, config) {
-                buxferResult = ServiceBuxferYQL.manageDoLoginError(data);    
+                buxferResult = ServiceBuxferAPI.manageDoLoginError(data);    
 				console.error(buxferResult.msg);
 					throw new Error(buxferResult.msg);
             });

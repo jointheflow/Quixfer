@@ -9,7 +9,8 @@ buxferModule.controller('GlobalController',
         $scope.users = ServiceBuxferModel.buxferModel.users;
         $scope.currentUser = ServiceBuxferModel.buxferModel.currentUser;
         $scope.tagtext= [];
-        $scope.tagexample = [{ text: 'Tag1' }, { text: 'Tag2' },{ text: 'Tag3' }] ;
+        //$scope.tagexample = [{ text: 'Tag1' }, { text: 'Tag2' },{ text: 'Tag3' }] ;
+        $scope.tagexample = ['Tag1', 'Tag2', 'Tag3'] ;
         
        
 });
