@@ -30,7 +30,7 @@ buxferModule.controller('AddController',
 		//define init of view view-add.html
 		$scope.initViewAdd = function () {
 			$scope.description="";
-            $scope.amount=0;
+            //$scope.amount=0;
 			$scope.tagtext ="";
             
 			//start managing load of multiple item dropdown menù for tags attribute 

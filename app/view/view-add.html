@@ -8,24 +8,24 @@
 				<div class="table-responsive">
 					<table class="table">
 					<tr>
-						<td>Date</td><td><input type="date" placeholder="yyyy-MM-dd" ng-model="transdate" required/></td>	
+						<!--td>Date</td--><td><input type="date" placeholder="yyyy-MM-dd" class="form-control" ng-model="transdate" required/></td>	
 
 					</tr>
 					<tr>
-						<td>Description</td><td><input type="text" name="description" ng-model="description" required/>
+						<!--td>Description</td--><td><input type="text" class="form-control" placeholder="Transaction description" name="description" ng-model="description" required/>
 						<!--validation message-->
 						<div ng-show="addTransactionForm.description.$invalid" class="text-warning"> Insert a transaction description! </div></td>
 
                 		
 					</tr>
 					<tr>
-						<td>Amount</td><td><input type="number" ng-model="amount"/></td>	
+						<!--td>Amount</td--><td><input type="number" placeholder="Transaction amount" class="form-control" ng-model="amount"/></td>	
 					</tr>
 					<!--tr>
 						<td>Tag</td><td> <div> <input type="text" ng-model="tagtext"> </div> <div ng-dropdown-multiselect="" options="tagdata" selected-model="tag" extra-settings="tagdatasetting"> </div>  </td>	
 					</tr-->
                     <tr>
-						<td> tags</td><td><tags-input ng-model="tagtext"><auto-complete source="loadTags($query)" max-results-to-show="20"></auto-complete></tags-input></td>
+						<!--td> tags</td--><td><tags-input ng-model="tagtext"><auto-complete source="loadTags($query)" max-results-to-show="20"></auto-complete></tags-input></td>
 					</tr>    
                         
 					<!--tr>
@@ -36,7 +36,7 @@
 							</select></td>	
 					</tr-->
 
-					<tr><td></td><td align="right"><button type="button" class="btn btn-default btn-sm" ng-click="addTransaction('Expense')" ng-disabled="addTransactionForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Expense</button><button type="button" class="btn btn-default btn-sm" ng-click="addTransaction('Income')" ng-disabled="addTransactionForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Income</button></td></tr>
+					<tr><!--td></td--><td align="right"><button type="button" class="btn btn-default btn-sm" ng-click="addTransaction('Expense')" ng-disabled="addTransactionForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Expense</button><button type="button" class="btn btn-default btn-sm" ng-click="addTransaction('Income')" ng-disabled="addTransactionForm.$invalid"><span class="glyphicon glyphicon-plus"></span> Income</button></td></tr>
 
 					</table>
 				</div>
