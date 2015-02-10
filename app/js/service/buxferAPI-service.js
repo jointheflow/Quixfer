@@ -114,7 +114,7 @@ buxferModule.service('ServiceBuxferAPI', function($http) {
     
     this.manageDoLoginError = function (data) {
 		var buxferResult = new BuxferResult();
-    	console.log("error, message is:"+data.error.message);
+    	console.log("error, message is:"+data);
 		buxferResult.status = BYC.resultStatusERROR;
 		buxferResult.value = BYC.errorCodeDoLoginFailed;
 		buxferResult.msg = data.error.message;
