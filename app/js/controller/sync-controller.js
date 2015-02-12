@@ -32,6 +32,8 @@ buxferModule.controller('SyncController',
 		
 		        
         $scope.synchronize = function () {
+            $scope.globalLoader.showloader();
+            
             var buxferResult;
             //execute login service
             var loginPromiseResponse = ServiceBuxferAPI.doLogin($scope.currentUser.username,    $scope.currentUser.password);
@@ -59,7 +61,8 @@ buxferModule.controller('SyncController',
                         
                         addTransPromiseResponse.error(function(data, status, headers, config) {
                         	buxferResult = ServiceBuxferAPI.manageDoAddTransactionError(data);
-                        	throw new Error(buxferResult.msg);
+                        	$scope.globalLoader.hideloader();
+                            throw new Error(buxferResult.msg);
                         });
                     }
 					
@@ -78,15 +81,17 @@ buxferModule.controller('SyncController',
 					getTagPromiseResponse.error(function(data, status, headers, config) {
 						buxferResult = ServiceBuxferAPI.manageDoGetTagError(data);    
 						console.error(buxferResult.msg);
+                        $scope.globalLoader.hideloader();
 						throw new Error(buxferResult.msg);
 					});
 			
 					
-					
+				    $scope.globalLoader.hideloader();	
                 }else {
                     //log and show error
                     console.error(buxferResult.status+" "+buxferResult.msg);
-					throw new Error(buxferResult.msg);
+					$scope.globalLoader.hideloader();
+                    throw new Error(buxferResult.msg);
                 }
             });
             
@@ -94,7 +99,8 @@ buxferModule.controller('SyncController',
             loginPromiseResponse.error(function(data, status, headers, config) {
                 buxferResult = ServiceBuxferAPI.manageDoLoginError(data);    
 				console.error(buxferResult.msg);
-					throw new Error(buxferResult.msg);
+                $scope.globalLoader.hideloader();
+				throw new Error(buxferResult.msg);
             });
         };
 		 

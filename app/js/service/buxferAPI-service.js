@@ -117,7 +117,7 @@ buxferModule.service('ServiceBuxferAPI', function($http) {
     	console.log("error, message is:"+data);
 		buxferResult.status = BYC.resultStatusERROR;
 		buxferResult.value = BYC.errorCodeDoLoginFailed;
-		buxferResult.msg = data.error.message;
+		buxferResult.msg = data.error;
     	return buxferResult;
 	};
 	
@@ -126,7 +126,7 @@ buxferModule.service('ServiceBuxferAPI', function($http) {
     	console.log("error, message is:"+data.error.message);
 		buxferResult.status = BYC.resultStatusERROR;
 		buxferResult.value = BYC.errorCodeDoAddTransactionFailed;
-		buxferResult.msg = data.error.message;
+		buxferResult.msg = data.error;
     	return buxferResult;
 	};
 	

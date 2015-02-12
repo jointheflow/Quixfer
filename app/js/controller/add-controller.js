@@ -111,7 +111,8 @@ buxferModule.controller('AddController',
             ServiceBuxferModel.commit();
 			
 			//show message
-			alert("Transaction added!");
+			//alert("Transaction added!");
+            $scope.alerts.push({ type: 'success', msg: 'Transaction added!' });
 			//reset view-add
 			$scope.initViewAdd();
         };

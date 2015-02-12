@@ -51,13 +51,17 @@
         </div>
     </div>
 </header>      
-   
+
    
   <div class="container-fluid">
   	<div data-ng-view></div>
   </div>
-			
-	
+ <!-- start alert section -->
+<div class="container">
+     <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}  </alert>
+</div>
+<!-- end alert section -->  			
+
 	
 <footer>
     <div class="navbar navbar-default navbar-fixed-bottom">

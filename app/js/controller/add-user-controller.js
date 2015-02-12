@@ -1,22 +1,15 @@
 /* AdUserController is used to manage user adding in the add user modal view*/
 buxferModule.controller('AddUserController', 
     
-    function ($scope, ServiceBuxferModel, ServiceBuxferAPI, $modal, $log, $modalInstance) {
-         /*loader icon manager begin*/
-        $scope.loader = {
-            loading: false,
-        };
-        $scope.showloader = function(){
-            $scope.loader.loading = true ;
-        }
-        $scope.hideloader = function(){
-            $scope.loader.loading = false ;
-        }
-        /*loader icon manager end*/
+    function ($scope, ServiceBuxferModel, ServiceBuxferAPI, $modal, $log, $modalInstance, globalLoader) {
+         /*loader icon manager: assign globalLoader to the local scope variable*/
+        $scope.loader = globalLoader;
+        
         
 		//Add a new user in the app
         $scope.addUser = function () {
-            $scope.showloader();
+            $scope.loader.showloader();
+            //$scope.showloader();
             var user0;
             var buxferResult;
             
@@ -52,12 +45,12 @@ buxferModule.controller('AddUserController',
                     $scope.currentUser = ServiceBuxferModel.buxferModel.currentUser;
                     //reload the page to update user info on navbar
                     window.location.reload();
-                    $scope.hideloader();
+                    $scope.loader.hideloader();
                 
                 }else {
                     //log and show error
                     console.error(buxferResult.status+" "+buxferResult.msg);
-                    $scope.hideloader();
+                    $scope.loader.hideloader();
 					throw new Error(buxferResult.msg);
                 }
             
@@ -71,7 +64,7 @@ buxferModule.controller('AddUserController',
             loginPromiseResponse.error(function(data, status, headers, config) {
                 buxferResult = ServiceBuxferAPI.manageDoLoginError(data);    
 				console.error(buxferResult.msg);
-                $scope.hideloader();
+                $scope.loader.hideloader();
 				throw new Error(buxferResult.msg);
             });
             

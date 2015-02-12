@@ -37,12 +37,12 @@ buxferModule.controller('SettingsController',
             var modalInstance = $modal.open({
               templateUrl: 'addUserModal.html',
               controller: 'AddUserController',
-              size: size
-             /* resolve: {
-                items: function () {
-                  return $scope.items;
+              size: size,
+              resolve: {
+                globalLoader: function () {
+                  return $scope.globalLoader;
                 }
-              }*/
+              }
             });
 
             modalInstance.result.then(function () {
