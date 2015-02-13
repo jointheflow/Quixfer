@@ -20,6 +20,7 @@
     <script type="text/javascript" src="js/controller/sync-controller.js"></script>
     <script type="text/javascript" src="js/controller/settings-controller.js"></script>
     <script type="text/javascript" src="js/controller/add-user-controller.js"></script>
+	 <script type="text/javascript" src="js/controller/show-msg-controller.js"></script>
     <script type="text/javascript" src="js/model/model.js"></script>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,15 +53,13 @@
     </div>
 </header>      
 
-   
+  <!-- Start View section --> 
   <div class="container-fluid">
   	<div data-ng-view></div>
   </div>
-    <!-- start alert section -->
-    <div class="container">
-         <alert ng-show="alert.show" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}  </alert>
-    </div>
-    <!-- end alert section -->  			
+  <!-- End View section -->
+	
+				
 
 	
 <footer>
@@ -82,4 +81,17 @@
 </footer>
    
 </body>
+	
+<!--Start modal alert manager -->
+ <script type="text/ng-template" id="showMessageModal.html">
+        <div class="modal-header"><span class="label label-info">Message from LocalBuxfer</span></div>
+        <div class="modal-body">
+			<!-- start alert section -->
+    		<div class="container-fluid">
+         		<alert ng-repeat="alert in alerts" type="{{alert.type}}" 	close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+    <!-- end alert section -->  
+		</div>
+ </script>
+<!--end modal alert manager -->
 </html>

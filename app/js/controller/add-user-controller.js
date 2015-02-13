@@ -51,6 +51,7 @@ buxferModule.controller('AddUserController',
                     //log and show error
                     console.error(buxferResult.status+" "+buxferResult.msg);
                     $scope.loader.hideloader();
+					
 					throw new Error(buxferResult.msg);
                 }
             
@@ -65,6 +66,7 @@ buxferModule.controller('AddUserController',
                 buxferResult = ServiceBuxferAPI.manageDoLoginError(data);    
 				console.error(buxferResult.msg);
                 $scope.loader.hideloader();
+				
 				throw new Error(buxferResult.msg);
             });
             

@@ -112,7 +112,7 @@ buxferModule.controller('AddController',
 			
 			//show message
 			//alert("Transaction added!");
-            $scope.alerts.push({ type: 'success', msg: 'Transaction added!' });
+            $scope.showMsg("Transaction added!","success");
 			//reset view-add
 			$scope.initViewAdd();
         };

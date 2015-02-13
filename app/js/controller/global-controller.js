@@ -1,16 +1,10 @@
 /* GloBalController is used to initialize the scope with users and current user, fetching it from local storage. GlobalController is defined at Application Level.*/
 buxferModule.controller('GlobalController', 
     
-    function ($scope, ServiceBuxferModel) {
+    function ($scope, ServiceBuxferModel, $modal, $log) {
         
-        $scope.alerts = [];
-        $scope.closeAlert = function(index) {
-            $scope.alerts.splice(index, 1);
-        };
-        /*    { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-            { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-        ];
-        */
+        
+        
         //fetching buxfer model from local storage
         ServiceBuxferModel.fetchFromLocalStorage();
         //initialize the scope with the users fetched from local storage
@@ -33,7 +27,30 @@ buxferModule.controller('GlobalController',
         //loader instantiation: we will use the global loader in the rest of the application
         $scope.globalLoader = new Loader(false);
         /*loader icon manager end*/
-       
+		
+		
+		/*defining and managing alert*/
+      	$scope.showMsg = function (_msg, _tpe) {
+            var l_alerts =[{type: _tpe, msg: _msg}];
+			
+			var modalInstance = $modal.open({
+              templateUrl: 'showMessageModal.html',
+              controller: 'ShowMsgController',
+              resolve: {
+                alerts: function () {
+                  return l_alerts;
+                }
+              }
+            });
+
+            modalInstance.result.then(function () {
+              //$scope.selected = selectedItem;
+            }, function () {
+              $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+		
+		
 });
 
 
