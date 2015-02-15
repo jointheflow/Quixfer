@@ -50,6 +50,18 @@ buxferModule.controller('GlobalController',
             });
         };
 		
+        
+        
+        //set focus to destinationId basing key event and key code
+        //for example key code 13 correponds to RETURN
+        $scope.setFocus = function(keyEvent, keyCode, destinationId) {
+            if (keyEvent.which === keyCode) { 
+                //alert('Focus to '+destinationId);
+                var element = document.getElementById(destinationId);
+                if(element)
+                    element.focus();
+            }
+        };
 		
 });
 

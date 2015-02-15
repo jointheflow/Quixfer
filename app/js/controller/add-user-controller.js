@@ -52,7 +52,7 @@ buxferModule.controller('AddUserController',
                     console.error(buxferResult.status+" "+buxferResult.msg);
                     $scope.loader.hideloader();
 					
-					throw new Error(buxferResult.msg);
+					throw new Error(buxferResult.msg.message);
                 }
             
             
@@ -67,7 +67,7 @@ buxferModule.controller('AddUserController',
 				console.error(buxferResult.msg);
                 $scope.loader.hideloader();
 				
-				throw new Error(buxferResult.msg);
+				throw new Error(buxferResult.msg.message);
             });
             
         };

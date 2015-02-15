@@ -56,6 +56,8 @@ buxferModule.controller('AddController',
       			day="0" + day;
 			}
     		$scope.transdate=year + "-" + month + "-" + day
+            //set focus to description
+            document.getElementById("description").focus();
 		};
 		
 		//initialize view-add view
