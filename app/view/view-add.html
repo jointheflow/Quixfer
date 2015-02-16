@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
 	
 		<div> <p class="bg-primary">  Add Transaction </p> </div>
             
@@ -19,7 +19,7 @@
                 		
 					</tr>
 					<tr>
-						<!--td>Amount</td--><td><input type="number" name="amount" id="amount" placeholder="Transaction amount" ng-keypress="setFocus($event, 13, 'tag')" class="form-control" ng-model="amount"/></td>	
+						<!--td>Amount</td--><td><input type="number" name="amount" id="amount" placeholder="Transaction amount" ng-keypress="setFocus($event, 13, 'tag', 'input')" class="form-control" ng-model="amount" load-on-focus="true"/></td>	
 					</tr>
 					<!--tr>
 						<td>Tag</td><td> <div> <input type="text" ng-model="tagtext"> </div> <div ng-dropdown-multiselect="" options="tagdata" selected-model="tag" extra-settings="tagdatasetting"> </div>  </td>	

@@ -112,9 +112,9 @@ buxferModule.controller('AddController',
 			//persist the model to the local storage
             ServiceBuxferModel.commit();
 			
-			//show message
-			//alert("Transaction added!");
-            $scope.showMsg("Transaction added!","success");
+			//show success message and tell to the modal view to set focus on description field
+			//when modal view is closed
+			$scope.showMsg("Transaction added!","success", "description");
 			//reset view-add
 			$scope.initViewAdd();
         };

@@ -2,6 +2,8 @@ Release note v4
 
 TODO:
 - move global behaviour and controll to global controller and index view (es. loader, alerting....)
+- tags.json does not return all tags
+- transaction does not add income
 
 
 
