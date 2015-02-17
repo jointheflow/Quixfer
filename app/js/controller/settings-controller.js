@@ -35,7 +35,7 @@ buxferModule.controller('SettingsController',
         
         $scope.openAddUser = function (size) {
             var modalInstance = $modal.open({
-              templateUrl: 'addUserModal.html',
+              templateUrl: 'view/view-addUserModal.html',
               controller: 'AddUserController',
               size: size,
               resolve: {

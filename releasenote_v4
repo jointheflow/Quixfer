@@ -2,6 +2,8 @@ Release note v4
 
 TODO:
 - move global behaviour and controll to global controller and index view (es. loader, alerting....)
+implement http://weblogs.asp.net/dwahlin/building-an-angularjs-modal-service
+
 - tags.json does not return all tags
 - transaction does not add income
 

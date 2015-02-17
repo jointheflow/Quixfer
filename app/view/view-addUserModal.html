@@ -1,0 +1,30 @@
+
+<div class="modal-header"><span class="label label-info">Add User</span></div>
+<div class="modal-body">
+	<form name="addUserfrm" novalidate>            
+		<div class="table-responsive">
+			<table class="table">
+			<tr>
+				<!--td>User</td--><td><input type="text" placeholder="username" name="username" ng-model="username" required/>
+				<!--validation user-->
+				<div ng-show="addUserfrm.username.$invalid" class="text-warning"> Insert a user! </div></td>
+
+
+			</tr>
+			<tr>
+				<!--td>Password</td--><td><input name="password" placeholder="password"  type="password" ng-model="password"/>
+				<!--validation password-->
+				<div ng-show="addUserfrm.password.$invalid" class="text-warning"> Insert a password! </div></td>	
+			</tr>
+			<tr><!--td></td--><td align="right"><button type="button" class="btn btn-default btn-xs" ng-click="addUser()" ng-disabled="addUserfrm.$invalid"><span class="glyphicon glyphicon-ok"></span>Confirm</button><button type="button" class="btn btn-default btn-xs" ng-click="cancel()"><span class="glyphicon glyphicon-remove"></span>Cancel</button></td></tr>
+
+			</table>
+			<div class="cancel">
+				<button ng-show="loader.loading" class="btn btn-success">Waiting...
+					<i class="fa fa-circle-o-notch fa-spin"></i>
+				</button>
+			</div>
+		</div>
+	</form>
+</div>
+    
