@@ -1,9 +1,9 @@
 
-<div class="modal-header"><span class="label label-info">Message from LocalBuxfer</span></div>
+<div class="modal-header"><span class="label label-info">{{modalOptions.headerText}}</span></div>
 <div class="modal-body">
 	<!-- start alert section -->
 	<div class="container-fluid">
-		<alert ng-repeat="alert in alerts" type="{{alert.type}}" 	close="closeAlert($index)">{{alert.msg}}</alert>
+		<alert  type="{{modalOptions.alertType}}" 	close="modalOptions.close()">{{modalOptions.bodyText}}</alert>
 	</div>
 <!-- end alert section -->  
 </div>

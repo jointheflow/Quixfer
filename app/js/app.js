@@ -34,13 +34,27 @@ buxferModule.config(['$routeProvider',
 //configure an exception handler that override the default implementation
 //showing an alert in the browser
 buxferModule.config(function($provide) {
-    $provide.decorator("$exceptionHandler", ["$delegate", function($delegate) {
+    $provide.decorator("$exceptionHandler", ["$delegate", function($delegate, ServiceBuxferUIAlert) {
         return function(exception, cause) {
             $delegate(exception, cause);
-          	alert(exception.message);
+          	
+            
+            
+            //alert(exception.message);
 			
         };
     }]);
 });
+
+
+buxferModule.factory('$exceptionHandler', function ($modal) {
+    return function (exception, cause) {
+        
+        
+        alert(exception.message);
+    };
+});
+
+
 					 
 					 

@@ -1,7 +1,7 @@
 /*AddController exposes all function necessary to the add-view. Since is used inside GlobalController it can see all properties defined in the GlobalController scope (parent)*/
 buxferModule.controller('AddController', 
     
-    function ($scope,$q, ServiceBuxferModel) {
+    function ($scope,$q, ServiceBuxferModel, ServiceBuxferUIAlert, $log) {
         
         //list of tag for current user
         $scope.tagdata = [];
@@ -114,9 +114,24 @@ buxferModule.controller('AddController',
 			
 			//show success message and tell to the modal view to set focus on description field
 			//when modal view is closed
-			$scope.showMsg("Transaction added!","success", "description");
-			//reset view-add
-			$scope.initViewAdd();
+			//$scope.showMsg("Transaction added!","success", "description");
+            var modalOptions = {
+                closeButtonText: 'Cancel',
+                headerText: 'Message from LocalBuxfer',
+                bodyText: 'Transaction added!',
+                alertType: 'success'
+            };
+
+            ServiceBuxferUIAlert.showModal({}, modalOptions).then(function (result) {
+                $log.info('close alert');
+                //reset view-add
+			     $scope.initViewAdd()    
+            });
+            
+            
+            
+            
+			
         };
         
 });
