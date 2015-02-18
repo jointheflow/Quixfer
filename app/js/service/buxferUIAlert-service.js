@@ -1,4 +1,5 @@
-/*This service is used to create and show alert in a centralized point*/
+/*This service is used to create and show alert in a centralized point
+The service follow Dan Wahlin's implementaion. http://weblogs.asp.net/dwahlin/building-an-angularjs-modal-service */
 buxferModule.service('ServiceBuxferUIAlert',  function ($modal) {
 
         this.serviceName = 'ServiceBuxferUIAlert';

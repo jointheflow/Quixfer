@@ -39,7 +39,7 @@ buxferModule.controller('AddController',
 			if ($scope.currentUser!=null)
 				$scope.tagdata = $scope.refreshTagData($scope.currentUser.tagList);
 			//use label as id, and show max 10 option selected in the menù
-			$scope.tagdatasetting= {smartButtonMaxItems: 10, displayProp: 'label', idProp: 'label'};
+			//$scope.tagdatasetting= {smartButtonMaxItems: 10, displayProp: 'label', idProp: 'label'};
 			//end managing load of multiple item dropdown menù for tags attribute
 			
 			$scope.transdate=
@@ -127,10 +127,7 @@ buxferModule.controller('AddController',
                 //reset view-add
 			     $scope.initViewAdd()    
             });
-            
-            
-            
-            
+             
 			
         };
         

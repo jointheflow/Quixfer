@@ -34,26 +34,35 @@ buxferModule.config(['$routeProvider',
 //configure an exception handler that override the default implementation
 //showing an alert in the browser
 buxferModule.config(function($provide) {
-    $provide.decorator("$exceptionHandler", ["$delegate", function($delegate, ServiceBuxferUIAlert) {
+    $provide.decorator("$exceptionHandler", ["$delegate", "$injector", "$log", function($delegate, $injector, $log) {
         return function(exception, cause) {
             $delegate(exception, cause);
-          	
-            
-            
-            //alert(exception.message);
-			
-        };
-    }]);
+			$log.error(exception + " caused by "+cause);
+			/* Alert manager start */
+			/*Avoid Circular dependency found: $modal <- $exceptionHandler <- $rootScope
+			we need to call the $injector manually to resolve the dependency at runtime*/
+			var ServiceBuxferUIAlert;
+			ServiceBuxferUIAlert = $injector.get('ServiceBuxferUIAlert');
+			var modalOptions = {
+                closeButtonText: 'Cancel',
+                headerText: 'Error from LocalBuxfer',
+                bodyText: exception.message,
+                alertType: 'danger'
+            };
+
+            ServiceBuxferUIAlert.showModal({}, modalOptions).then(function (result) {
+                //$log.info('close alert');
+                   
+            });
+			/* Alert manager end */
+			//alert(exception.message);		        
+    	};
+  	}
+  ]);
 });
 
 
-buxferModule.factory('$exceptionHandler', function ($modal) {
-    return function (exception, cause) {
-        
-        
-        alert(exception.message);
-    };
-});
+
 
 
 					 
