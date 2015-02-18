@@ -70,7 +70,7 @@ buxferModule.controller('AddController',
             //get the current user
             user0 = $scope.currentUser;
             if (user0==null) {
-                throw "You must select a current user!"
+                throw new Error("You must select a current user!");
             }
             
             //create the transaction
