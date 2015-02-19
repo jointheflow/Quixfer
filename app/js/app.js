@@ -1,5 +1,5 @@
 // Create a new module
-var buxferModule = angular.module('buxferModule', ['ngRoute', 'ui.bootstrap', 'ngCordova', 'ngTagsInput']);
+var buxferModule = angular.module('buxferModule', ['ngRoute', 'ui.bootstrap', 'ngCordova', 'ngTagsInput', 'nsPopover']);
 
 // configure application routes
 buxferModule.config(['$routeProvider',
@@ -15,9 +15,9 @@ buxferModule.config(['$routeProvider',
 		templateUrl: 'view/view-settings.html',
         controller: 'SettingsController'
       }).
-      when('/about', {
+      when('/info', {
         //templateUrl: 'view-about',
-		templateUrl: 'view/view-about.html'
+		templateUrl: 'view/view-info.html'
         //controller: 'GlobalController'
       }).
 	  when('/synch', {
@@ -25,6 +25,11 @@ buxferModule.config(['$routeProvider',
 		templateUrl: 'view/view-sync.html',
         controller: 'SyncController'
       }).
+	  when('/credits', {
+			//templateUrl: 'view-about',
+			templateUrl: 'view/view-credits.html'
+			//controller: 'SyncController'
+	  }).
       otherwise({
         redirectTo: '/add',
 		controller: 'GlobalController'

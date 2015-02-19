@@ -1,7 +1,7 @@
 /*AddController exposes all function necessary to the add-view. Since is used inside GlobalController it can see all properties defined in the GlobalController scope (parent)*/
 buxferModule.controller('AddController', 
     
-    function ($scope,$q, ServiceBuxferModel, ServiceBuxferUIAlert, $log) {
+    function ($scope,$q, ServiceBuxferModel, ServiceBuxferUIAlert, $log, $timeout) {
         
         //list of tag for current user
         $scope.tagdata = [];
@@ -57,7 +57,9 @@ buxferModule.controller('AddController',
 			}
     		$scope.transdate=year + "-" + month + "-" + day
             //set focus to description
-            document.getElementById("description").focus();
+            $timeout(function () {
+				document.getElementById("description").focus();
+				}, 0, false);
 		};
 		
 		//initialize view-add view
