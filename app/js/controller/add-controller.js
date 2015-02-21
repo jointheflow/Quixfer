@@ -58,7 +58,7 @@ buxferModule.controller('AddController',
     		$scope.transdate=year + "-" + month + "-" + day
             //set focus to description
             $timeout(function () {
-				document.getElementById("description").focus();
+				document.getElementById("amount").focus();
 				}, 0, false);
 		};
 		
@@ -120,7 +120,7 @@ buxferModule.controller('AddController',
             var modalOptions = {
                 closeButtonText: 'Cancel',
                 headerText: 'Message from LocalBuxfer',
-                bodyText: 'Transaction added!',
+                bodyText: t0.type+': '+t0.date+', '+t0.description+', '+t0.amount+' added!' ,
                 alertType: 'success'
             };
 

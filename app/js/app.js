@@ -41,8 +41,10 @@ buxferModule.config(['$routeProvider',
 buxferModule.config(function($provide) {
     $provide.decorator("$exceptionHandler", ["$delegate", "$injector", "$log", function($delegate, $injector, $log) {
         return function(exception, cause) {
+            
             $delegate(exception, cause);
-			$log.error(exception + " caused by "+cause);
+			
+            $log.error(exception + " caused by "+cause);
 			/* Alert manager start */
 			/*Avoid Circular dependency found: $modal <- $exceptionHandler <- $rootScope
 			we need to call the $injector manually to resolve the dependency at runtime*/

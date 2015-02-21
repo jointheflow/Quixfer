@@ -1,7 +1,21 @@
 <div class="container-fluid">
-
+    <header>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                    <a class="navbar-brand" href="http://www.buxfer.com" target="_blank"><img style="max-width:50px; margin-top: -7px;"
+                 src="img/buxfer_01_ico.png">Quixfer</a> <span class="icon-bar"></span>
+                          
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#synch" ng-click="synchronize()"><i class="fa fa-cloud-upload fa-2x"></i></button></a></li>
+                </ul>
+            </div>
+        </div>
+    </header>	
 	
-	<div><p class="bg-primary"> Sync view </p></div>
+	<div><p class="bg-primary"> Sync view  <div align="right"><i class="fa fa-user"></i>  <i>{{currentUser.username}} </i><span class="badge">{{currentUser.transactionList.length}}</span>
+            </div>
+        </p>
+    </div>
 	
 	 <form name="SynchTransactionForm" novalidate>
 				<div class="table-responsive">
@@ -23,7 +37,7 @@
 							<td>{{transaction.amount}}<!--input type="number" ng-model=transaction.amount /--></td>
 							<td>{{transaction.tags}}<!--input type="text" ng-model=transaction.tags /--></td>
 							<td>{{transaction.type}}<!--input type="text" ng-model=transaction.type /--></td>
-							<td><!--button ng-click="updateTransaction(transaction)">Save</button--> <button type="button" class="btn btn-default btn-xs"  ng-click="removeTransaction(transaction.id)"><span class="glyphicon glyphicon-minus"></span> Cancel</button><p></td>
+							<td><!--button ng-click="updateTransaction(transaction)">Save</button--> <button type="button" class="btn btn-default btn-xs"  ng-click="removeTransaction(transaction.id)"><i class="fa fa-cloud-upload "></i> Cancel</button><p></td>
 						</tr>
 						
 					</table>
@@ -32,7 +46,7 @@
 	
 	
 	
-		<button type="button" class="btn btn-default btn-sm" ng-click="synchronize()"><span class="glyphicon glyphicon-transfer"></span> Synch</button><p>
+		<button type="button" class="btn btn-default btn-sm" ng-click="synchronize()"><i class="fa fa-cloud-upload"></i> Synch</button><p>
     
     <button ng-show="globalLoader.loading" class="btn btn-success">Waiting...
         <i class="fa fa-circle-o-notch fa-spin"></i>

@@ -33,13 +33,15 @@ buxferModule.service('ServiceBuxferAPI', function($http) {
 
 	
     this.doLogin = function (userid, password) {
-		var queryUrl = BYC.buxferUrlAPI + BYC.buxferLoginAPI + "userid=" + userid + "&password=" + password ;
 		
-		console.log("doLogin start:"+userid+","+password);
-		console.log(queryUrl);
-		console.log("doLogin end:"+userid+","+password);
-		
-		return $http({method: 'GET', url:queryUrl});
+            var queryUrl = BYC.buxferUrlAPI + BYC.buxferLoginAPI + "userid=" + userid + "&password=" + password ;
+
+            console.log("doLogin start:"+userid+","+password);
+            console.log(queryUrl);
+            console.log("doLogin end:"+userid+","+password);
+
+            return $http({method: 'GET', url:queryUrl});
+       
 		
     };
     
@@ -112,18 +114,20 @@ buxferModule.service('ServiceBuxferAPI', function($http) {
 			
     };
     
-    this.manageDoLoginError = function (data) {
+    this.manageDoLoginError = function (data, status, headers, config) {
 		var buxferResult = new BuxferResult();
-    	console.log("error, message is:"+data);
+    	console.error("status:"+ status);
+        console.log("error, message is:"+data);
 		buxferResult.status = BYC.resultStatusERROR;
 		buxferResult.value = BYC.errorCodeDoLoginFailed;
 		buxferResult.msg = data.error;
     	return buxferResult;
 	};
 	
-	 this.manageDoAddTransactionError = function (data) {
+	 this.manageDoAddTransactionError = function (data, status, headers, config) {
 		var buxferResult = new BuxferResult();
-    	console.log("error, message is:"+data.error.message);
+    	console.error("status:"+ status);
+        console.log("error, message is:"+data.error.message);
 		buxferResult.status = BYC.resultStatusERROR;
 		buxferResult.value = BYC.errorCodeDoAddTransactionFailed;
 		buxferResult.msg = data.error;

@@ -1,34 +1,37 @@
 <div class="container-fluid">
 	
-		<div> <p class="bg-primary">  Add Transaction </p> </div>
+    <header>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                    <a class="navbar-brand" href="http://www.buxfer.com" target="_blank"><img style="max-width:50px; margin-top: -7px;"
+                 src="img/buxfer_01_ico.png">Quixfer</a>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-class="{disabled: addTransactionForm.$invalid}"><a href="#" ng-click="addTransaction('Expense')" ><i class="fa fa-minus-square fa-2x"></i></a>
+                        </li>
+                        <li ng-class="{disabled: addTransactionForm.$invalid}"><a href="#" ng-click="addTransaction('Income')"><i class="fa fa-plus-square fa-2x"></i></a>
+                        </li>
+                    </ul>
+
+
+
+            </div>
+        </div>
+    </header> 
+		
+    
+    
+    <div> 
+        <p class="bg-primary">  Add Transaction 
+            <div align="right"><i class="fa fa-user"></i>  <i>{{currentUser.username}} </i><span class="badge">{{currentUser.transactionList.length}}</span>
+            </div> 
+        </p> 
+    </div>
             
 			
-            
             <form name="addTransactionForm" novalidate>
+            
 				<div class="table">
 					<table class="table">
-					<tr>
-						<!--td>Date</td-->
-						<td>
-							<div class="input-group">
-								<div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-								<input type="date" placeholder="yyyy-MM-dd" class="form-control" ng-model="transdate" ng-keypress="setFocus($event, 13, 'description')" required/>
-							</div>
-						</td>	
-					</tr>
-					<tr>
-						<!--td>Description</td-->
-						<td>
-							<div class="input-group">
-      							<div class="input-group-addon"><i class="fa fa-pencil"></i></div>
-								<input type="text" class="form-control" placeholder="Transaction description" name="description" id="description" ng-model="description" ng-keypress="setFocus($event, 13, 'amount')" required  tooltip-trigger="focus" tooltip-html-unsafe="<div><button type=&quot;button&quot; class=&quot;btn btn-default btn-sm&quot; ng-click=&quot;alert()&quot;> <i class=&quot;fa fa-minus-square&quot;></i> Expense</button></div>"/>
-						<!--validation message-->
-									<!--div ng-show="addTransactionForm.description.$invalid" class="text-warning"> Insert a transaction description! </div-->
-							</div> 
-						</td>
-
-                		
-					</tr>
 					<tr>
 						<!--td>Amount</td-->
 						<td>
@@ -38,18 +41,44 @@
 							</div>
 						</td>	
 					</tr>
-					<!--tr>
-						<td>Tag</td><td> <div> <input type="text" ng-model="tagtext"> </div> <div ng-dropdown-multiselect="" options="tagdata" selected-model="tag" extra-settings="tagdatasetting"> </div>  </td>	
-					</tr-->
+                    
                     <tr>
 						<!--td> tags</td-->
 						<td>
 							<div class="input-group">
       							<div class="input-group-addon"><i class="fa fa-tags"></i></div>
-								<tags-input name="tag" id="tag" ng-model="tagtext" ng-keypress="setFocus($event, 13, 'btnExpense')" add-on-enter="false"><auto-complete source="loadTags($query)" max-results-to-show="20" min-length="1"></auto-complete></tags-input>
+								<tags-input name="tag" id="tag" ng-model="tagtext" ng-keypress="setFocus($event, 13, 'description')" add-on-enter="false"><auto-complete source="loadTags($query)" max-results-to-show="20" min-length="1"></auto-complete></tags-input>
 							</div>
 						</td>
 					</tr>    
+                    <tr>
+                        
+						<!--td>Description</td-->
+						<td>
+							<div class="input-group">
+      							<div class="input-group-addon"><i class="fa fa-pencil"></i></div>
+								<input type="text" class="form-control" placeholder="Transaction description" name="description" id="description" ng-model="description" ng-keypress="setFocus($event, 13, 'tdate')" required />
+						<!--validation message-->
+									<!--div ng-show="addTransactionForm.description.$invalid" class="text-warning"> Insert a transaction description! </div-->
+							</div> 
+						</td>
+
+                		
+					</tr>
+					<tr>
+						<!--td>Date</td-->
+						<td>
+							<div class="input-group">
+								<div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+								<input type="date" id="tdate" placeholder="yyyy-MM-dd" class="form-control" ng-model="transdate" ng-keypress="setFocus($event, 13, 'btnExpense')" required/>
+							</div>
+						</td>	
+					</tr>
+					
+					<!--tr>
+						<td>Tag</td><td> <div> <input type="text" ng-model="tagtext"> </div> <div ng-dropdown-multiselect="" options="tagdata" selected-model="tag" extra-settings="tagdatasetting"> </div>  </td>	
+					</tr-->
+                    
                         
 					<!--tr>
 						<td>Type</td><td><select ng-model="type" class="form-control">

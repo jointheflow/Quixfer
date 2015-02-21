@@ -1,5 +1,17 @@
 <div class="container-fluid">
-	<div> <p class="bg-primary"> Info </p> 
+    <header>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                    <a class="navbar-brand" href="http://www.buxfer.com" target="_blank"><img style="max-width:50px; margin-top: -7px;"
+                 src="img/buxfer_01_ico.png">Quixfer</a>
+                    
+            </div>
+        </div>
+    </header>	
+	<div> <p class="bg-primary"> Info <div align="right"><i class="fa fa-user"></i>  <i>{{currentUser.username}} </i><span class="badge">{{currentUser.transactionList.length}}</span>
+            </div>
+        </p>
+    </div>
 		<p>Put the instructions</p>
 	</div>
 </div>

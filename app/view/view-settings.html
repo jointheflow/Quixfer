@@ -1,6 +1,21 @@
 <div class="container-fluid">
-		
-	<div> <p class="bg-primary"> Setting view </p> </div>
+	<header>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                    <a class="navbar-brand" href="http://www.buxfer.com" target="_blank"><img style="max-width:50px; margin-top: -7px;"
+                 src="img/buxfer_01_ico.png">Quixfer</a>
+                        
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#settings" ng-click="openAddUser()"><i class="fa fa-user-plus fa-2x"></i></a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </header>	
+	<div> <p class="bg-primary"> Setting view <div align="right"><i class="fa fa-user"></i>  <i>{{currentUser.username}} </i><span class="badge">{{currentUser.transactionList.length}}</span>
+            </div>
+        </p>
+    </div>
 
     
     <form name="setUserfrm" novalidate>
@@ -22,7 +37,7 @@
 						
 					</table>
 		</div>
-		<button class="btn btn-default btn-xs" ng-click="openAddUser()"><span class="glyphicon glyphicon-plus"></span>Add User</button>
+		<button class="btn btn-default btn-xs" ng-click="openAddUser()"><i class="fa fa-user-plus"></i> Add User</button>
 	</form>	
 	
 			

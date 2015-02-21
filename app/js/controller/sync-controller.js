@@ -97,7 +97,7 @@ buxferModule.controller('SyncController',
             
             //manage error result
             loginPromiseResponse.error(function(data, status, headers, config) {
-                buxferResult = ServiceBuxferAPI.manageDoLoginError(data);    
+                buxferResult = ServiceBuxferAPI.manageDoLoginError(data, status, headers, config);    
 				console.error(buxferResult.msg);
                 $scope.globalLoader.hideloader();
 				throw new Error(buxferResult.msg);
