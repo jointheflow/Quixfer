@@ -3,19 +3,23 @@
     <header>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
-                    <a class="navbar-brand" href="http://www.buxfer.com" target="_blank"><img style="max-width:50px; margin-top: -7px;"
-                 src="img/buxfer_01_ico.png">Quixfer</a>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li ng-class="{disabled: addTransactionForm.$invalid}"><a href="#" ng-click="addTransaction('Expense')" ><i class="fa fa-minus-square fa-2x"></i></a>
-                        </li>
-                        <li ng-class="{disabled: addTransactionForm.$invalid}"><a href="#" ng-click="addTransaction('Income')"><i class="fa fa-plus-square fa-2x"></i></a>
-                        </li>
-                    </ul>
-
-
-
+                <!-- brand section-->
+                <div ng-include="'view/view-navbarBrand.html'"></div>    
+                <!-- end brand section -->
+                
+                <!-- tool button section -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!--li ng-class="{disabled: addTransactionForm.$invalid}"--><li><a href="#" ng-click="addTransaction('Expense')" ><i class="fa fa-minus-square fa-2x"></i></a>
+                    </li>
+                    <!--li ng-class="{disabled: addTransactionForm.$invalid}"--><li><a href="#" ng-click="addTransaction('Income')"><i class="fa fa-plus-square fa-2x"></i></a>
+                    </li>
+                </ul>
+                <!-- end tool button section -->
             </div>
+
+
         </div>
+        
     </header> 
 		
     
@@ -74,22 +78,9 @@
 							</div>
 						</td>	
 					</tr>
-					
-					<!--tr>
-						<td>Tag</td><td> <div> <input type="text" ng-model="tagtext"> </div> <div ng-dropdown-multiselect="" options="tagdata" selected-model="tag" extra-settings="tagdatasetting"> </div>  </td>	
-					</tr-->
-                    
-                        
-					<!--tr>
-						<td>Type</td><td><select ng-model="type" class="form-control">
-											<option value="Expense" selected="selected">Expense</option>
-											<option value="Income">Income</option>
-
-							</select></td>	
-					</tr-->
-
-					<tr><!--td></td--><td align="right"><button type="button" class="btn btn-default btn-sm" id="btnExpense" ng-click="addTransaction('Expense')" ng-disabled="addTransactionForm.$invalid"><i class="fa fa-minus-square"></i> Expense</button> <button type="button" class="btn btn-default btn-sm" id="btnIncome" ng-click="addTransaction('Income')" ng-disabled="addTransactionForm.$invalid"><i class="fa fa-plus-square"></i> Income</button></td></tr>
-
+					<!-- button section -->
+					<!--tr><!--td></td--><!--td align="right"><button type="button" class="btn btn-default btn-sm" id="btnExpense" ng-click="addTransaction('Expense')" ng-disabled="addTransactionForm.$invalid"><i class="fa fa-minus-square"></i> Expense</button> <button type="button" class="btn btn-default btn-sm" id="btnIncome" ng-click="addTransaction('Income')" ng-disabled="addTransactionForm.$invalid"><i class="fa fa-plus-square"></i> Income</button></td></tr-->
+                    <!-- end buton section -->
 					</table>
 				</div>
 			</form> 
