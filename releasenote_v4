@@ -21,7 +21,7 @@ dependencies:
 - http://angular-translate.github.io/#
 - http://mbenford.github.io/ngTagsInput/gettingstarted
 - http://fortawesome.github.io/Font-Awesome/examples/
-- https://github.com/nohros/nsPopover
+
 - http://mgcrea.github.io/angular-strap/#
 
 windows: start chrome using "chrome.exe --disable-web-security -–allow-file-access-from-files"
