@@ -15,50 +15,36 @@
         </div>
     </header>	
 	
-	<div><p class="bg-primary"> Sync view  <div align="right"><i class="fa fa-user"></i>  <i>{{currentUser.username}} </i><span class="badge">{{currentUser.transactionList.length}}</span>
-            </div>
+	<div>
+		<p class="bg-primary"> Sync view  
+			<!-- user and loader section-->
+                <div ng-include="'view/view-userHeader.html'"></div>    
+            <!-- end user and loader section -->
+			
         </p>
     </div>
 	
 	 <form name="SynchTransactionForm" novalidate>
-				<!--div class="table-responsive">
-					<table class="table table-striped" >
-						<tr> 
-							<!--th>Id</th-->
-							<!--th>Date</th>
-							<th>Description</th>
-							<th>Amount</th>
-							<th>Tag</th>
-							<th>Type</th>
-							<th> Action</th>
-						</tr>
+				
+		  <div class="panel panel-default">
+		  	 <table class="table table-hover">
+      			<tbody>
+				 	<!-- get all transaction ordered by transaction date from the most recent"-->
+					<tr data-ng-repeat="transaction in currentUser.transactionList | orderBy : '-date'">
+						<td><h5 class="list-group-item-heading"><strong>{{transaction.date}} - {{transaction.type}}</strong></h5>
+                        <p class="list-group-item-text">Amount: {{transaction.amount}},00</p>  <p class="list-group-item-text">Description: {{transaction.description}}</p><p class="list-group-item-text">Tags: {{transaction.tags}}</p></td>
 						
-						<tr data-ng-repeat="transaction in currentUser.transactionList">
-							<!--td>{{transaction.id}}</td-->
-							<!--td>{{transaction.date}} <!--input type="date" placeholder="yyyy-MM-dd" ng-model=transaction.date /--><!--/td>
-							<td>{{transaction.description}}<!--input type="text" ng-model=transaction.description /--></td>
-							<!--td>{{transaction.amount}}<!--input type="number" ng-model=transaction.amount /--><!--/td>
-							<td>{{transaction.tags}}<!--input type="text" ng-model=transaction.tags /--><!--/td>
-							<td>{{transaction.type}}<!--input type="text" ng-model=transaction.type /--><!--/td>
-							<td><!--button ng-click="updateTransaction(transaction)">Save</button--> <!--button type="button" class="btn btn-default btn-xs"  ng-click="removeTransaction(transaction.id)"><i class="fa fa-cloud-upload "></i> Cancel</button><p></td>
+						<td style="vertical-align: middle"> <button type="button" class="btn btn-default btn-sm" ng-click="removeTransaction(transaction.id)"><i class="fa fa-trash fa-2x"></i></button></td>
 						</tr>
-						
-					</table>
-				 </div-->
-         
-                <ul class="list-group">
-                    <li data-ng-repeat="transaction in currentUser.transactionList" class="list-group-item" ng-swipe-left="removeTransaction(transaction.id)"><h5 class="list-group-item-heading">{{transaction.date}} - {{transaction.type}}</h5>
-                        <p class="list-group-item-text">{{transaction.type}}, Description: {{transaction.description}}, Amount: {{transaction.amount}},00, Tags: {{transaction.tags}} </p>
-                    </li>
-                </ul>
-		 </form>
+				</tbody>
+			</table>
+          </div>
+	</form>
 	
 	
 	
-		<!--button type="button" class="btn btn-default btn-sm" ng-click="synchronize()"><i class="fa fa-cloud-upload"></i> Synch</button><p-->
+		
     
-    <button ng-show="globalLoader.loading" class="btn btn-success">Waiting...
-        <i class="fa fa-circle-o-notch fa-spin"></i>
-    </button>
+    
  
 </div>

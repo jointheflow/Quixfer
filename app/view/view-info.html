@@ -9,8 +9,11 @@
             </div>
         </div>
     </header>	
-	<div> <p class="bg-primary"> Info <div align="right"><i class="fa fa-user"></i>  <i>{{currentUser.username}} </i><span class="badge">{{currentUser.transactionList.length}}</span>
-            </div>
+	<div> 
+		<p class="bg-primary"> Info 
+			<!-- user and loader section-->
+                <div ng-include="'view/view-userHeader.html'"></div>    
+            <!-- end user and loader section -->
         </p>
     </div>
 		<p>Put the instructions</p>
