@@ -61,10 +61,10 @@
         <div class="container">
             
                 <ul class="nav navbar-nav">
-                    <li><a href="#add"><i class="fa fa-pencil-square-o"></i> Add</a></li>
-					<li><a href="#synch"><i class="fa fa-paper-plane-o"></i> Synch</a></li>
-                    <li><a href="#settings"><i class="fa fa-wrench"></i> Set</a></li>
-                    <li><a href="#info"><i class="fa fa-info"></i> Info</a></li>
+                    <li ng-class="getClass('/add')"><a href="#add" ><i class="fa fa-pencil-square-o"></i> Add</a></li>
+					<li ng-class="getClass('/synch')"><a href="#synch"><i class="fa fa-paper-plane-o"></i> Synch</a></li>
+                    <li ng-class="getClass('/settings')"><a href="#settings"><i class="fa fa-wrench"></i> Set</a></li>
+                    <li ng-class="getClass('/info')"><a href="#info"><i class="fa fa-info"></i> Info</a></li>
 					<!--li><a href="#credits"><i class="fa fa-star-o"></i> Credits</a></li-->
                    
                 </ul>

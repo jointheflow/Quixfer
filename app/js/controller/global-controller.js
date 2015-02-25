@@ -1,7 +1,7 @@
 /* GloBalController is used to initialize the scope with users and current user, fetching it from local storage. GlobalController is defined at Application Level.*/
 buxferModule.controller('GlobalController', 
     
-    function ($scope, ServiceBuxferModel, $modal, $log, $timeout) {
+    function ($scope, ServiceBuxferModel, $modal, $log, $timeout, $location) {
         
         $scope.applicationName= buxferConst.applicationName;
 		$scope.applicationVersion = buxferConst.applicationVersion;
@@ -79,6 +79,15 @@ buxferModule.controller('GlobalController',
 						}, 0, false);
             }
         };
+		
+		//used to set the active link on navbar
+		$scope.getClass = function(path) {
+			if ($location.path().substr(0, path.length) == path) {
+			  return "active"
+			} else {
+			  return ""
+			}
+		};
 		
 });
 
