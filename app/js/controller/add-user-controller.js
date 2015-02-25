@@ -14,11 +14,17 @@ buxferModule.controller('AddUserController',
             var buxferResult;
             
             user0 = new User($scope.username);
-            user0.password = $scope.password;
+            //set encrypted password
+            var encryptedPwd = CryptoJS.AES.encrypt($scope.password, ServiceBuxferModel.buxferModel.currentUserKey);
+            
+            //user0.password = $scope.password;
+            user0.password = encryptedPwd.toString();
             user0.savePassword = $scope.savePassword;
             
-            //execute login service
-            var loginPromiseResponse = ServiceBuxferAPI.doLogin(user0.username, user0.password);
+            //execute login service, decrypting password
+            var decryptedPwd = CryptoJS.AES.decrypt(user0.password, ServiceBuxferModel.buxferModel.currentUserKey);
+            
+            var loginPromiseResponse = ServiceBuxferAPI.doLogin(user0.username, decryptedPwd.toString(CryptoJS.enc.Utf8));
             
             //manage success result
             loginPromiseResponse.success(function(data, status, headers, config) {

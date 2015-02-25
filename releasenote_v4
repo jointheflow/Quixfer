@@ -23,6 +23,7 @@ dependencies:
 - http://fortawesome.github.io/Font-Awesome/examples/
 
 - http://mgcrea.github.io/angular-strap/#
+- http://cryptojs.altervista.org/api/#AES
 
 windows: start chrome using "chrome.exe --disable-web-security -–allow-file-access-from-files"
 mac: /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-security -–allow-file-access-from-files
