@@ -12,7 +12,7 @@ function BuxferModel() {
     this.currentUserKey = '1q2w3e4r_default_5t6y7u';
     
     //contains the sw version
-    this.version = "1.0.0";
+    //this.version = "1.0.0";
 }
 //set the current user
 BuxferModel.prototype.setCurrentUser = function(aUser) {

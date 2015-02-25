@@ -4,6 +4,7 @@ buxferModule.controller('ShowMsgController',
     function ($scope, $modal, $log, $modalInstance, alerts, focusTo) {
         
         $scope.alerts = alerts;
+		$scope.applicationName = buxferConst.applicationName;
 		
 		$scope.closeAlert = function(index) {
             $scope.alerts.splice(index, 1);

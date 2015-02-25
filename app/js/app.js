@@ -1,3 +1,8 @@
+var buxferConst = buxferConst || {
+	applicationName: "Quixfer",
+	applicationVersion: "1.0.0-beta"
+};
+
 // Create a new module
 var buxferModule = angular.module('buxferModule', ['ngRoute', 'ui.bootstrap', 'ngCordova', 'ngTagsInput', 'nsPopover', 'ngTouch']);
 
@@ -52,7 +57,7 @@ buxferModule.config(function($provide) {
 			ServiceBuxferUIAlert = $injector.get('ServiceBuxferUIAlert');
 			var modalOptions = {
                 closeButtonText: 'Cancel',
-                headerText: 'Error from LocalBuxfer',
+                headerText: buxferConst.applicationName,
                 bodyText: exception.message,
                 alertType: 'danger'
             };

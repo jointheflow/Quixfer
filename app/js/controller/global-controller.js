@@ -3,7 +3,8 @@ buxferModule.controller('GlobalController',
     
     function ($scope, ServiceBuxferModel, $modal, $log, $timeout) {
         
-        
+        $scope.applicationName= buxferConst.applicationName;
+		$scope.applicationVersion = buxferConst.applicationVersion;
         
         //fetching buxfer model from local storage
         ServiceBuxferModel.fetchFromLocalStorage();

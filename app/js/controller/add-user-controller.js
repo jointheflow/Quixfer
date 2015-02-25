@@ -4,7 +4,7 @@ buxferModule.controller('AddUserController',
     function ($scope, ServiceBuxferModel, ServiceBuxferAPI, $modal, $log, $modalInstance, globalLoader) {
          /*loader icon manager: assign globalLoader to the local scope variable*/
         $scope.loader = globalLoader;
-        
+        $scope.applicationName = buxferConst.applicationName;
         
 		//Add a new user in the app
         $scope.addUser = function () {
@@ -14,12 +14,17 @@ buxferModule.controller('AddUserController',
             var buxferResult;
             
             user0 = new User($scope.username);
-            user0.password = $scope.password;
+            //set encrypted password, using the userkey constant as passphrase
+			//var enc =CryptoJS.AES.encrypt($scope.password, ServiceBuxferModel.buxferModel.currentUserKey);
+			user0.password = CryptoJS.AES.encrypt($scope.password,  ServiceBuxferModel.buxferModel.currentUserKey);
+			
             user0.savePassword = $scope.savePassword;
             
-            //execute login service
-            var loginPromiseResponse = ServiceBuxferAPI.doLogin(user0.username, user0.password);
-            
+            //execute login service using derypted password
+            //var loginPromiseResponse = ServiceBuxferAPI.doLogin(user0.username, user0.password);
+           
+			var loginPromiseResponse = ServiceBuxferAPI.doLogin(user0.username, CryptoJS.AES.decrypt(user0.password, ServiceBuxferModel.buxferModel.currentUserKey).toString(CryptoJS.enc.Utf8));
+			
             //manage success result
             loginPromiseResponse.success(function(data, status, headers, config) {
                 console.log("RESULT:"+data);

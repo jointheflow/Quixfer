@@ -119,7 +119,7 @@ buxferModule.controller('AddController',
 			//$scope.showMsg("Transaction added!","success", "description");
             var modalOptions = {
                 closeButtonText: 'Cancel',
-                headerText: 'Message from LocalBuxfer',
+                headerText: $scope.applicationName,
                 bodyText: t0.type+': '+t0.date+', '+t0.description+', '+t0.amount+' added!' ,
                 alertType: 'success'
             };
