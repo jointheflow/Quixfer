@@ -35,8 +35,11 @@ buxferModule.controller('SyncController',
             $scope.globalLoader.showloader();
             
             var buxferResult;
+            //decrypting password
+            var decryptedPwd = CryptoJS.AES.decrypt($scope.currentUser.password, ServiceBuxferModel.buxferModel.currentUserKey);
+            
             //execute login service
-            var loginPromiseResponse = ServiceBuxferAPI.doLogin($scope.currentUser.username,    $scope.currentUser.password);
+            var loginPromiseResponse = ServiceBuxferAPI.doLogin($scope.currentUser.username,    decryptedPwd.toString(CryptoJS.enc.Utf8));
             //manage success result
             loginPromiseResponse.success(function(data, status, headers, config) {
                 console.log("RESULT:"+data);

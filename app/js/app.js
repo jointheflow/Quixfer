@@ -4,7 +4,7 @@ var buxferConst = buxferConst || {
 };
 
 // Create a new module
-var buxferModule = angular.module('buxferModule', ['ngRoute', 'ui.bootstrap', 'ngCordova', 'ngTagsInput', 'nsPopover', 'ngTouch']);
+var buxferModule = angular.module('buxferModule', ['ngRoute', 'ui.bootstrap', 'ngCordova', 'ngTagsInput']);
 
 // configure application routes
 buxferModule.config(['$routeProvider',

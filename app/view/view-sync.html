@@ -8,7 +8,7 @@
                 
                 <!-- start tool button -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#synch" ng-click="synchronize()"><i class="fa fa-cloud-upload fa-2x"></i></a></li>
+                    <li><a href="#synch" ng-click="synchronize()" tooltip-placement="bottom" tooltip="Synchronize Transactions"><i class="fa fa-cloud-upload fa-2x"></i></a></li>
                 </ul>
                 <!-- end tool button -->
             </div>
@@ -34,7 +34,7 @@
 						<td><h5 class="list-group-item-heading"><strong>{{transaction.date}} - {{transaction.type}}</strong></h5>
                         <p class="list-group-item-text">Amount: {{transaction.amount}},00</p>  <p class="list-group-item-text">Description: {{transaction.description}}</p><p class="list-group-item-text">Tags: {{transaction.tags}}</p></td>
 						
-						<td style="vertical-align: middle"> <button type="button" class="btn btn-default btn-sm" ng-click="removeTransaction(transaction.id)"><i class="fa fa-trash fa-2x"></i></button></td>
+						<td style="vertical-align: middle"> <button type="button" class="btn btn-default btn-sm" ng-click="removeTransaction(transaction.id)" tooltip-placement="bottom" tooltip="Remove Transaction"><i class="fa fa-trash fa-2x"></i></button></td>
 						</tr>
 				</tbody>
 			</table>
