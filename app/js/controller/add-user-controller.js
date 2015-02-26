@@ -57,10 +57,10 @@ buxferModule.controller('AddUserController',
                 
                 }else {
                     //log and show error
-                    console.error(buxferResult.status+" "+buxferResult.msg);
+                    console.error(buxferResult.status+" "+buxferResult.msg.message);
                     $scope.loader.hideloader();
 					
-					throw new Error(buxferResult.msg.message);
+					throw new Error(buxferResult.msg);
                 }
             
             
@@ -71,14 +71,21 @@ buxferModule.controller('AddUserController',
             
              //manage error result
             loginPromiseResponse.error(function(data, status, headers, config) {
-                buxferResult = ServiceBuxferAPI.manageDoLoginError(data);    
+                
+				buxferResult = ServiceBuxferAPI.manageDoLoginError(data, status, headers, config);    
 				console.error(buxferResult.msg);
                 $scope.loader.hideloader();
 				
-				throw new Error(buxferResult.msg.message);
+				throw new Error(buxferResult.msg);
             });
+			
+			/*loginPromiseResponse.catch() {
+				console.info();
+			}*/
             
         };
+		
+			
             
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');

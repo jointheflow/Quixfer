@@ -117,20 +117,38 @@ buxferModule.service('ServiceBuxferAPI', function($http) {
     this.manageDoLoginError = function (data, status, headers, config) {
 		var buxferResult = new BuxferResult();
     	console.error("status:"+ status);
-        console.log("error, message is:"+data);
-		buxferResult.status = BYC.resultStatusERROR;
-		buxferResult.value = BYC.errorCodeDoLoginFailed;
-		buxferResult.msg = data.error;
+        buxferResult.status = BYC.resultStatusERROR;
+		//managing status=0 means undefined
+		if (status==0) {
+			
+			buxferResult.value = BYC.errorCodeConnectionProblem;
+			buxferResult.msg = BYC.errorMsgConnectionProblem;
+		}else {
+			buxferResult.value = BYC.errorCodeDoLoginFailed;
+			buxferResult.msg = data.error.message;
+		}
+			
+		console.log("error, message is:"+data);
+		
     	return buxferResult;
 	};
 	
 	 this.manageDoAddTransactionError = function (data, status, headers, config) {
 		var buxferResult = new BuxferResult();
     	console.error("status:"+ status);
-        console.log("error, message is:"+data.error.message);
-		buxferResult.status = BYC.resultStatusERROR;
-		buxferResult.value = BYC.errorCodeDoAddTransactionFailed;
-		buxferResult.msg = data.error;
+        
+		//managing status=0 means undefined
+		if (status==0) {
+			
+			buxferResult.value = BYC.errorCodeConnectionProblem;
+			buxferResult.msg = BYC.errorMsgConnectionProblem;
+		}else {
+			buxferResult.value = BYC.errorCodeDoAddTransactionFailed;
+			buxferResult.msg = data.error.message;
+		}
+		
+		
+		console.log("error, message is:"+data.error.message);
     	return buxferResult;
 	};
 	
