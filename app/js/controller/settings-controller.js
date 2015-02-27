@@ -3,7 +3,15 @@ buxferModule.controller('SettingsController',
     
     function ($scope, ServiceBuxferModel, ServiceBuxferAPI, $modal, $log) {
              
-        $scope.removeUser = function (username) {
+        
+		$scope.saveConfiguration = function() {
+			 ServiceBuxferModel.commit();
+			 $scope.currentUser = ServiceBuxferModel.buxferModel.currentUser;
+			 //reload the page to update user info on navbar
+            window.location.reload();
+		};
+		
+		$scope.removeUser = function (username) {
             //remove user from model
             ServiceBuxferModel.buxferModel.removeUser(username);
             

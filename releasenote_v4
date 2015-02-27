@@ -6,9 +6,9 @@ implement http://weblogs.asp.net/dwahlin/building-an-angularjs-modal-service
 
 - tags.json does not return all tags
 - transaction does not add income
-- error management for connection problem e.g. timeout or other intercept by the browser
+V error management for connection problem e.g. timeout or other intercept by the browser
 V Synch view: on swipe show a message or button elimina (use ng Show or other)
-- Setting view: create a panel where specify user preference as description default,
+V Setting view: create a panel where specify user preference as description default,
 V password saved encryped
 - add view: accept only number on amount field
 

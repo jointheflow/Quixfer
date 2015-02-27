@@ -33,6 +33,7 @@ buxferModule.service('ServiceBuxferModel', function() {
                 user.username = userObject.username;
                 user.password = userObject.password;
                 user.savePassword = userObject.savePassword;
+				user.defaultDescription = userObject.defaultDescription;
                 user.transactionList = userObject.transactionList;
                 user.tagList =userObject.tagList;
                 //push user to the global model

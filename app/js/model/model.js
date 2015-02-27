@@ -76,6 +76,7 @@ function User(username) {
     this.username = username;
     this.password='******';
     this.savePassword=false;
+	this.defaultDescription="";
     this.transactionList= []; //array of LocalTransaction 
     this.tagList= []; //array of LocalTag
     

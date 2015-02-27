@@ -89,6 +89,15 @@ buxferModule.controller('GlobalController',
 			}
 		};
 		
+		//used to set the active user
+		$scope.isUserActive = function(usr) {
+			if (usr == ServiceBuxferModel.buxferModel.currentUser.username)
+				return "true"
+			else
+				return ""
+		
+		};
+		
 });
 
 

@@ -9,6 +9,8 @@
                 <!-- tool button section -->        
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#settings" ng-click="openAddUser()" tooltip-placement="bottom" tooltip="Add User"><i class="fa fa-user-plus fa-2x"></i></a></li>
+					<li><a href="#settings" ng-click="saveConfiguration()" tooltip-placement="bottom" tooltip="Save Configuration"><i class="fa fa-floppy-o fa-2x"></i></a></li>
+					
                 </ul>
                 <!-- end tool section -->
             </div>
@@ -25,24 +27,26 @@
 
     
     <form name="setUserfrm" novalidate>
-		<div class="table-responsive">
-					<table class="table table-striped" >
-						<tr> 
-							<!--th>Id</th-->
-							<th>User</th>
-							<th>Action</th>
-							
-						</tr>
-						
-						<tr data-ng-repeat="user in users">
-							
-							<td>{{user.username}}</td>
-							
-							<td><button type="button" class="btn btn-default btn-xs" ng-click="setCurrent(user)"><span class="glyphicon glyphicon-star"></span> Set</button><button type="button"  class="btn btn-default btn-xs" ng-click="removeUser(user.username)"> <span class="glyphicon glyphicon-minus"></span>Remove</button></td>
-						</tr>
-						
-					</table>
+			
+		<div data-ng-repeat="user in users" class="panel panel-default">
+  			<div class="panel-heading" ><input type="radio" ng-click="setCurrent(user)" ng-checked="isUserActive(user.username)"> - </input><i class="fa fa-user"></i>  <i>{{user.username}} - </i> <button  type="button" class="btn btn-default btn-sm" ng-click="removeUser(user.username)" tooltip-placement="bottom" tooltip="Remove User"><i class="fa fa-user-times fa-2x"></i></button></div>
+  			<div class="panel-body">
+    			
+				<table class="table">
+					<tr>
+						<!--td>default description</td-->
+						<td>
+							<div class="input-group">
+								<div class="input-group-addon"><i class="fa fa-pencil"></i></div>
+								<input type="text" name="descdefault" id="descdefault" ng-model="user.defaultDescription" placeholder="default transaction description" class="form-control" />
+							</div>
+						</td>	
+					</tr>
+				</table>
+  			</div>
 		</div>
+		
+		
 		<!--button class="btn btn-default btn-xs" ng-click="openAddUser()"><i class="fa fa-user-plus"></i> Add User</button-->
 	</form>	
 	

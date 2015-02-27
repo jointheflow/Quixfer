@@ -29,7 +29,7 @@ buxferModule.controller('AddController',
 		
 		//define init of view view-add.html
 		$scope.initViewAdd = function () {
-			$scope.description="change me!";
+			$scope.description= ServiceBuxferModel.buxferModel.currentUser.defaultDescription;
             $scope.amount="";
 			$scope.tagtext ="";
             
