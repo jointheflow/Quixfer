@@ -72,7 +72,7 @@ buxferModule.service('ServiceBuxferModel', function() {
         var encryptedPwd = CryptoJS.AES.encrypt(aUser.clearPassword, this.buxferModel.currentUserKey);
         aUser.encryptedPassword = encryptedPwd.toString();
         //....then cleans clearPassword prior to save the user
-        aUser.clearPassword="*********";
+        //aUser.clearPassword="*********";
         
         userString = flatStringify(aUser);
         //transactionString = JSON.stringify(aUser.transactionList);
