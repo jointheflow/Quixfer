@@ -31,7 +31,12 @@ buxferModule.service('ServiceBuxferModel', function() {
                 user = new User();
                 //set properties of the user fro userObject
                 user.username = userObject.username;
-                user.password = userObject.password;
+                user.encryptedPassword = userObject.encryptedPassword;
+                
+                //decrypting password and put value to clear password
+                var decryptedPwd = CryptoJS.AES.decrypt(user.encryptedPassword, this.buxferModel.currentUserKey);
+                user.clearPassword = decryptedPwd.toString(CryptoJS.enc.Utf8);
+                
                 user.savePassword = userObject.savePassword;
 				user.defaultDescription = userObject.defaultDescription;
                 user.transactionList = userObject.transactionList;
@@ -61,6 +66,13 @@ buxferModule.service('ServiceBuxferModel', function() {
     this.saveUser = function(aUser) {
         var userString, transactionString;
         console.log(this.serviceName + ".saveUser() begin");
+        
+        //change the encrypted password ecnrypting the clear password
+        //provides by the user
+        var encryptedPwd = CryptoJS.AES.encrypt(aUser.clearPassword, this.buxferModel.currentUserKey);
+        aUser.encryptedPassword = encryptedPwd.toString();
+        //....then cleans clearPassword prior to save the user
+        aUser.clearPassword="*********";
         
         userString = flatStringify(aUser);
         //transactionString = JSON.stringify(aUser.transactionList);

@@ -74,7 +74,9 @@ BuxferModel.prototype.indexOfUsers = function (username) {
 //User definition
 function User(username) {
     this.username = username;
-    this.password='******';
+    this.encryptedPassword='******';
+    //the clear password is not persisted on the local storage but used to bing ngModel
+    this.clearPassword='******';
     this.savePassword=false;
 	this.defaultDescription="";
     this.transactionList= []; //array of LocalTransaction 

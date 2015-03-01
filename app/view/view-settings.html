@@ -29,20 +29,36 @@
     <form name="setUserfrm" novalidate>
 			
 		<div data-ng-repeat="user in users" class="panel panel-default">
-  			<div class="panel-heading" ><input type="radio" ng-click="setCurrent(user)" ng-checked="isUserActive(user.username)"> - </input><i class="fa fa-user"></i>  <i>{{user.username}} - </i> <button  type="button" class="btn btn-default btn-sm" ng-click="removeUser(user.username)" tooltip-placement="bottom" tooltip="Remove User"><i class="fa fa-user-times fa-2x"></i></button></div>
+  			<div class="panel-heading" ><input type="checkbox" ng-click="setCurrent(user)" ng-checked="isUserActive(user.username)"> - </input><i class="fa fa-user"></i>  <i>{{user.username}}</i>                </div>
   			<div class="panel-body">
     			
-				<table class="table">
-					<tr>
-						<!--td>default description</td-->
-						<td>
-							<div class="input-group">
-								<div class="input-group-addon"><i class="fa fa-pencil"></i></div>
-								<input type="text" name="descdefault" id="descdefault" ng-model="user.defaultDescription" placeholder="default transaction description" class="form-control" />
-							</div>
-						</td>	
-					</tr>
-				</table>
+                <table class="table" style="border: none">
+                    <tr>
+                        <td style="border: none"><table class="table" cellspacing="0" cellpadding="0" style="border: none">
+                                <tr style="border: none">
+                                    <!--td>default description</td-->
+                                    <td style="border: none">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-pencil"></i></div>
+                                            <input type="text" tooltip-placement="bottom" tooltip="default transaction description" name="descdefault" id="descdefault" ng-model="user.defaultDescription" placeholder="default transaction description" class="form-control" />
+                                        </div>
+                                    </td>	
+                                </tr>
+                                <tr>
+                                <!--td>password</td-->
+                                    <td style="border: none">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-user-secret"></i></div>
+                                            <input type="password" tooltip-placement="bottom" tooltip="user's password" name="password" id="password" ng-model="user.clearPassword" placeholder="password" class="form-control" />
+                                        </div>
+                                    </td>	
+                                </tr>
+                            </table>
+                        </td>
+                        <td style="vertical-align: middle; border: none"><button  type="button" class="btn btn-default btn-sm" ng-click="removeUser(user.username)" tooltip-placement="bottom" tooltip="Remove User"><i class="fa fa-user-times fa-2x"></i></button></td>
+                    </tr>
+                </table>
+				
   			</div>
 		</div>
 		
