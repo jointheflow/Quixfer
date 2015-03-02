@@ -29,7 +29,12 @@ buxferModule.controller('AddController',
 		
 		//define init of view view-add.html
 		$scope.initViewAdd = function () {
-			$scope.description= ServiceBuxferModel.buxferModel.currentUser.defaultDescription;
+			//manage the case when user is still not selected
+			if (ServiceBuxferModel.buxferModel.currentUser != null)
+				$scope.description= ServiceBuxferModel.buxferModel.currentUser.defaultDescription;
+			else
+				$scope.description="";
+			
             $scope.amount="";
 			$scope.tagtext ="";
             
