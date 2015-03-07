@@ -71,15 +71,24 @@ buxferModule.service('ServiceBuxferModel', function() {
         //provides by the user
         var encryptedPwd = CryptoJS.AES.encrypt(aUser.clearPassword, this.buxferModel.currentUserKey);
         aUser.encryptedPassword = encryptedPwd.toString();
-        //....then cleans clearPassword prior to save the user
-        //aUser.clearPassword="*********";
+        
+		//....then cleans clearPassword prior to save the user
+        var tmpPwd = aUser.clearPassword;
+		aUser.clearPassword="*********";
+
         
         userString = flatStringify(aUser);
-        //transactionString = JSON.stringify(aUser.transactionList);
+        
+		
         
        // console.log(transactionString);
         localStorage.setItem(aUser.username, userString );
-        console.log(userString);
+		
+		
+		//after user has been persisted, restore cleaned password to be visible in the userinterface
+        aUser.clearPassword = tmpPwd;
+		
+		console.log(userString);
         console.log(this.serviceName + ".saveUser() end");
     };
     
